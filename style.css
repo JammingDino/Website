@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap');
+
+:root {
+	--font-primary: 'Karla', sans-serif;
+	--font-display: var(--font-primary) !important;
+	/* Dark Matter Variables */
+	--avatar-size: 32px;
+	--background-image: url('https://i.imgur.com/7SbtKvw.png');
+	--home-image: url('https://i.imgur.com/233d55Y.gif');
+	--background-solid: #161921;
+	--background-solid-dark: #101218;
+	--background-solid-darker: #0c0e12;
+	--accent: 37, 172, 232;
+	--accent-alt: 29, 101, 134;
+	--md-black: 0, 0, 0;
+	--dm-white: 255, 255, 255;
+	--channels-default: rgba(var(--dm-white), 0.3);
+    --header-primary: rgba(var(--dm-white), 1);
+    --header-secondary: rgba(var(--dm-white), 0.6);
+    --text-normal: rgba(var(--dm-white), 0.6);
+	--text-link: rgba(var(--accent), 1);
+	--interactive-normal: rgba(var(--dm-white), 0.5);
+	--interactive-hover: rgba(var(--dm-white), 0.75);
+	--interactive-active: rgba(var(--dm-white), 1);
+}
+
+html {
+    font-family: var(--font-primary);
+}
+
+h1 {
+    color: var(--header-primary);
+    text-align: center;
+    background-color: var(--background-solid-dark);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+iframe {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--background-solid-dark);
+}
+
+.projects-container {
+    border-radius: 8px;
+    padding: 10px;
+    background-color: var(--background-solid-darker);
+}
+
+.project-label {
+    color: var(--header-primary);
+    text-align: center;
+    background-color: var(--background-solid-dark);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+body {
+    background-color: var(--background-solid);
+    color: var(--text-normal)
+}
