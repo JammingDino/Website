@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    body {
+        @apply bg-background
+    }
+
+    .sidebar-icon {
+        @apply relative flex items-center justify-center h-12 w-12 mx-auto bg-background hover:bg-accent rounded-3xl hover:rounded-xl
+        transition-all duration-200 ease-linear shadow-lg hover:drop-shadow-2xl shadow-darker_background;
+    }
+
+    .sidebar-tooltip {
+        @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-text_normal bg-dark_background text-xs transition-all duration-100 scale-0 
+        origin-left;
+    }
+
+    .sidebar-hr {
+        @apply bg-background border-background rounded-full mx-2;
+    }
+
+    .sidebar-folder {
+        @apply bg-darker_background w-12 justify-center mx-auto shadow-lg h-auto mt-2 rounded-3xl
+    }
+}
