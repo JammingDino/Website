@@ -1,11 +1,23 @@
 import { useState } from "react";
 
-import Folder from "../../assets/icons/Folder.svg";
-import Node from "../../assets/icons/Node.svg";
-import Node2D from "../../assets/icons/Node2D.svg";
-import Node3D from "../../assets/icons/Node3D.svg";
-import CharacterBody2D from "../../assets/icons/CharacterBody2D.svg";
-import CharacterBody3D from "../../assets/icons/CharacterBody3D.svg";
+import {
+    Folder,
+    Node,
+    Node2D,
+    Node3D,
+    CharacterBody2D,
+    CharacterBody3D,
+    AnimationPlayer,
+    Viewport,
+    Window,
+    AcceptDialog,
+    ConfirmationDialog,
+    FileDialog,
+    Popup,
+    PopupMenu,
+    PopupPanel,
+    SubViewport,
+} from "../../assets";
 
 const dropDownData = [
     { 
@@ -19,7 +31,28 @@ const dropDownData = [
             { "icon": Node, "text": "Node", "link": "https://google.com/", "children": [] },
         ]
     },
-    { "icon": Node, "text": "Node", "link": "https://google.com/", "children": [] },
+    {
+        "icon": Viewport,
+        "link" : false,
+        "text": "Viewport",
+        "children": [
+            {
+                "icon": Window,
+                "link" : false,
+                "text": "Window",
+                "children": [
+                    
+                ]
+            },
+            {
+                "icon": SubViewport,
+                "link" : false,
+                "text": "Window",
+                "children": []
+            }
+        ]
+    },
+    { "icon": AnimationPlayer, "text": "AnimationPlayer", "link": "https://google.com/", "children": [] },
     { "icon": Node, "text": "Node", "link": "https://google.com/", "children": [] },
     { "icon": Node, "text": "Node", "link": "https://google.com/", "children": [] },
     { "icon": Node, "text": "Node", "link": "https://google.com/", "children": [] },
