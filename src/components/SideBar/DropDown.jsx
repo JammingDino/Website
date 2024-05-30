@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 import {
+    HomeIcon,
+    Script,
+    File,
     Folder,
     Node,
     Node2D,
@@ -21,6 +24,18 @@ import {
 } from "../../assets";
 
 const dropDownData = [
+    {
+        "icon": HomeIcon,
+        "link" : "/",
+        "text": "Home",
+        "children": []
+    },
+    {
+        "icon": File,
+        "link" : "/resources",
+        "text": "Resources",
+        "children": []
+    },
     {
         "icon": Node,
         "link" : false,
@@ -134,14 +149,20 @@ function DropDownItem({items = [{ "icon": Node, "text": "Node", "link": "https:/
     const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="sidebar-folder">
-            <button type="button" onClick={() => setIsOpen((prev) => !prev)}> 
-                <a href={link}>
+            <button type="button" onClick={() => {
+                    { !link ? (
+                        setIsOpen((prev) => !prev)
+                    ) : (
+                        setIsOpen((prev) => prev)
+                    )}
+                }}> 
+                <Link to={link}>
                     {!isOpen ? (
                         <SideBarIcon icon={<img src={base} alt="Node"/>} text={text} />
                     ) : (
                         <SideBarIcon icon={<img src={Folder} alt="Folder"/>} text="Close" /> 
                     )}
-                </a>
+                </Link>
             </button>
             {!isOpen ? (
                 <div />
@@ -159,12 +180,12 @@ function DropDownItem({items = [{ "icon": Node, "text": "Node", "link": "https:/
 };
 
 const SideBarIcon = ({ icon, text = '', link=false}) => (
-    <a className="sidebar-icon group" href={link}>
+    <div className="sidebar-icon group">
         {icon}
         <span className="sidebar-tooltip group-hover:scale-100">
             {text}
         </span>
-    </a>
+    </div>
 );
 
 export default DropDown;

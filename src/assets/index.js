@@ -45,7 +45,9 @@ import TabBar from "./icons/TabBar.svg";
 import Tree from "./icons/Tree.svg";
 import VideoStreamPlayer from "./icons/VideoStreamPlayer.svg";
 
-import Copy from "./icons/Copy.svg";
+import HomeIcon from "./icons/HomeIcon.svg";
+import Script from "./icons/Script.svg";
+import File from "./icons/File.svg";
 
 export {
     Folder,
@@ -64,5 +66,7 @@ export {
     PopupMenu,
     PopupPanel,
     SubViewport,
-    Copy,
+    HomeIcon,
+    Script,
+    File,
 }
