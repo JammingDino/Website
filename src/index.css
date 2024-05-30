@@ -7,6 +7,22 @@
         @apply bg-background
     }
 
+    h1 {
+        @apply text-2xl p-5
+    }
+    
+    p {
+        @apply pl-5 pr-5 pb-2 pt-2
+    }
+
+    a {
+        @apply text-accent hover:text-alt_accent transition-all duration-300
+    }
+
+    .codeblock {
+        @apply m-5 p-5 bg-dark_background rounded-md shadow-lg border-solid border-4 border-darker_background whitespace-pre
+    }
+
     .sidebar-icon {
         @apply relative flex items-center justify-center h-12 w-12 mx-auto bg-background hover:bg-accent rounded-3xl hover:rounded-xl
         transition-all duration-200 ease-linear shadow-lg hover:drop-shadow-2xl shadow-darker_background;
@@ -22,6 +38,10 @@
     }
 
     .sidebar-folder {
-        @apply bg-darker_background w-12 justify-center mx-auto shadow-lg h-auto mt-2 rounded-3xl
+        @apply bg-darker_background w-12 justify-center mx-auto shadow-sm shadow-accent_20_opacity bg-opacity-10 h-auto mt-2 rounded-3xl
+    }
+
+    .content-container {
+        @apply flex flex-col m-0 h-full w-full overflow-hidden text-text_normal;
     }
 }

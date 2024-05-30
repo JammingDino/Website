@@ -1,18 +1,22 @@
 import SideBar from './components/SideBar/SideBar.jsx';
 import DropDown from './components/SideBar/DropDown.jsx';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   return (
-    <Router>
-      <div className="flex">
-        <DropDown />
-      </div>
+    <BrowserRouter>
       <Routes>
-        <Route></Route>
+        <Route path="/" element={<DropDown />}>
+          <Route index element={<Home />}/>
+          <Route path="about" element={<About />}/>
+
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
