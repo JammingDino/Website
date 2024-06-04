@@ -21,6 +21,7 @@ import {
     PopupMenu,
     PopupPanel,
     SubViewport,
+    Camera2D
 } from "../../assets";
 
 const dropDownData = [
@@ -32,14 +33,14 @@ const dropDownData = [
     },
     {
         "icon": File,
-        "link" : "/resources",
+        "link" : "/Resources",
         "text": "Resources",
         "children": []
     },
     {
-        "icon": Node,
-        "link" : false,
-        "text": "Node",
+        "icon": Camera2D,
+        "link" : "/Camera2D",
+        "text": "Camera 2D",
         "children": []
     },
     {

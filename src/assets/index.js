@@ -69,4 +69,5 @@ export {
     HomeIcon,
     Script,
     File,
+    Camera2D,
 }
