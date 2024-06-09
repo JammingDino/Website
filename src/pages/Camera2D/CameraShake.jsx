@@ -70,7 +70,7 @@ func _ready():
 	noise.seed = randi()
 
 func add_trauma(amount : float):
-    trauma = min(trauma + abs(amount), 1.0)
+        trauma = min(trauma + abs(amount), 1.0)
 
 func _process(delta):
 	if trauma:
