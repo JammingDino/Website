@@ -3,9 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JammingDino's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    This is my website hosted on github pages
+    <!-- Div for the mouse follower effect -->
+    <div id="cursor-glow"></div>
+
+    <header class="main-header">
+        <nav class="container">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button id="theme-toggle" title="Toggle Theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.906 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.061-1.06l-1.59-1.591zM4.5 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H5.25A.75.75 0 014.5 12zM6.166 6.106a.75.75 0 00-1.06 1.06l1.591 1.59a.75.75 0 101.06-1.061l-1.591-1.59z"/></svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.51 1.713-6.635 4.398-8.552a.75.75 0 01.818.162z" clip-rule="evenodd" /></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <div class="hero">
+                <h1>JammingDino</h1>
+                <h2>Creative Developer & Problem Solver</h2>
+                <p class="intro">
+                    A passionate developer with an interest in creating and building new things. I enjoy turning complex problems into elegant, user-friendly applications. Explore my projects below to see my work.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects by Skill</h2>
+
+            <div class="skill-section">
+                <h3>Python</h3>
+                <p class="skill-description">I use Python to turn ideas into automated solutions. I leverage its powerful scripting capabilities to automate repetitive tasks and build efficient data processing pipelines. Furthermore, I have experience developing full-fledged desktop applications with libraries like CustomTkinter, creating intuitive tools that solve specific user needs.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Datapack to Fabric Mod Converter</h3>
+                        <p>A desktop tool with a clean UI to convert Minecraft datapacks into complete, working Fabric mods. Automates metadata and packages directly to a .jar file.</p>
+                        <a href="https://github.com/JammingDino/Origins-Converter/tree/main" target="_blank">View on GitHub</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Valorant Companion App</h3>
+                        <p>A Python-based desktop application providing useful in-game information for Valorant players.</p>
+                        <a href="https://github.com/JammingDino/Valorant-Companion-App" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-section">
+                <h3>Minecraft Mod Development</h3>
+                <p class="skill-description">My Java experience is centered on the Minecraft ecosystem, where I use the Fabric API to develop custom mods. This involves everything from creating new items and game mechanics to designing complex systems that interact with the game's core logic. My projects on CurseForge showcase my ability to deliver polished and functional content to a large user base.</p>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>CurseForge Projects</h3>
+                        <p>A collection of my published Minecraft mods, demonstrating my skills in Java and the Fabric API, with thousands of downloads from the community.</p>
+                        <a href="https://www.curseforge.com/members/jammingdino/projects" target="_blank">View on CurseForge</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-section">
+                <h3>Godot Game Development</h3>
+                 <p class="skill-description">I utilize the Godot Engine for both game development and the creation of interactive simulations. With its powerful 2D/3D rendering capabilities and intuitive GDScript language, I can build everything from engaging gameplay mechanics to complex simulations that require robust physics and visual fidelity. This skillset is ideal for projects that demand high-performance, real-time graphics.</p>
+                 <div class="project-grid">
+                    <!-- Add Godot project cards here when ready -->
+                    <div class="project-card placeholder">
+                        <h3>Upcoming Game Project</h3>
+                        <p>A 2D platformer currently in development using the Godot Engine. More details to come!</p>
+                        <a href="#" target="_blank">Coming Soon</a>
+                    </div>
+                 </div>
+            </div>
+            
+            <div class="skill-section">
+                <h3>Android App Development</h3>
+                <p class="skill-description">I develop cross-platform mobile applications using React Native, which allows for building a single app that runs seamlessly on both Android and iOS. My focus is on creating responsive, performant, and user-friendly mobile experiences by leveraging modern JavaScript principles and native component integrations.</p>
+                 <div class="project-grid">
+                    <!-- Add Android project cards here when ready -->
+                    <div class="project-card placeholder">
+                        <h3>Utility App Concept</h3>
+                        <p>Exploring concepts for a mobile utility application built with React Native. Stay tuned for development updates.</p>
+                        <a href="#" target="_blank">Coming Soon</a>
+                    </div>
+                 </div>
+            </div>
+
+            <div class="skill-section">
+                <h3>Web Technologies</h3>
+                <p class="skill-description">I build modern, responsive, and interactive websites using foundational web technologies like HTML, CSS, and JavaScript. My focus is on writing clean, semantic code that provides a great user experience across all devices.</p>
+                 <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Portfolio Website</h3>
+                        <p>This very website! Built from scratch with HTML, CSS, and JavaScript, focusing on a clean, modern, and responsive design with a custom mouse-tracking effect.</p>
+                        <a href="https://github.com/JammingDino/Website" target="_blank">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects or opportunities. Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:your-email@example.com" class="contact-button email">Email Me</a>
+                <a href="https://github.com/JammingDino" target="_blank" class="contact-button github">GitHub</a>
+                <a href="https://www.linkedin.com/in/your-linkedin-profile/" target="_blank" class="contact-button linkedin">LinkedIn</a>
+                <a href="https://discordapp.com/users/your-discord-id" target="_blank" class="contact-button discord">Discord</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 JammingDino</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

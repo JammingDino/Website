@@ -1,0 +1,266 @@
+:root {
+    /* Light Theme */
+    --bg-color-light: #f4f4f4;
+    --text-color-light: #212529;
+    --card-bg-light: #ffffff;
+    --header-footer-bg-light: #e9ecef;
+    --link-color-light: #007bff;
+    --border-color-light: #dee2e6;
+    --spotlight-color-light: rgba(0, 86, 179, 0.1);
+
+    /* Dark Theme (Google AI Studio Inspired) */
+    --bg-color-dark: #1e1f20;
+    --text-color-dark: #e8eaed;
+    --card-bg-dark: #2a2b2e;
+    --header-footer-bg-dark: #242528;
+    --link-color-dark: #8ab4f8;
+    --border-color-dark: #3c4043;
+    --spotlight-color-dark: rgba(138, 180, 248, 0.08);
+}
+
+/* Mouse Follower Spotlight */
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: background 0.3s ease-out;
+}
+body.light-mode #cursor-glow {
+    background: radial-gradient(circle, var(--spotlight-color-light) 0%, transparent 60%);
+}
+body.dark-mode #cursor-glow {
+    background: radial-gradient(circle, var(--spotlight-color-dark) 0%, transparent 60%);
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.light-mode {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Navigation */
+.main-header {
+    padding: 15px 0;
+    border-bottom: 1px solid;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+}
+body.light-mode .main-header { border-color: var(--border-color-light); background-color: rgba(244,244,244, 0.8); }
+body.dark-mode .main-header { border-color: var(--border-color-dark); background-color: rgba(30, 31, 32, 0.8); }
+
+.main-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-link {
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+body.light-mode .nav-link { color: var(--text-color-light); }
+body.dark-mode .nav-link { color: var(--text-color-dark); }
+.nav-link:hover {
+    color: var(--link-color-light);
+}
+body.dark-mode .nav-link:hover { color: var(--link-color-dark); }
+
+/* New Theme Toggle Button Style */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+#theme-toggle:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+#theme-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+.moon-icon { display: none; }
+.sun-icon { display: none; }
+
+body.light-mode .moon-icon { display: block; fill: var(--text-color-light); }
+body.dark-mode .sun-icon { display: block; fill: var(--text-color-dark); }
+
+
+/* Main Content & Sections */
+main {
+    padding-top: 60px;
+}
+section {
+    padding: 60px 0;
+    border-bottom: 1px solid;
+}
+section:last-of-type {
+    border-bottom: none;
+}
+body.light-mode section { border-color: var(--border-color-light); }
+body.dark-mode section { border-color: var(--border-color-dark); }
+
+.hero h1 { font-size: 3rem; margin: 0; }
+.hero h2 { font-size: 1.5rem; margin: 10px 0; font-weight: 400; }
+.hero .intro { font-size: 1.1rem; max-width: 700px; }
+section h2 { font-size: 2rem; margin-bottom: 40px; }
+
+/* Skill Sections */
+.skill-section {
+    margin-bottom: 50px;
+}
+.skill-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.skill-description {
+    max-width: 800px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+
+/* Project Cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, border-color 0.3s;
+}
+.project-card.placeholder {
+    opacity: 0.7;
+}
+
+/* Card Hover Effect */
+.project-card:hover {
+    transform: translateY(-5px);
+}
+body.light-mode .project-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+body.dark-mode .project-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+body.light-mode .project-card {
+    background-color: var(--card-bg-light);
+    border-color: var(--border-color-light);
+}
+body.dark-mode .project-card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+
+/* Line breaks inside cards */
+.project-card h3 {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid;
+}
+.project-card p {
+    flex-grow: 1;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid;
+}
+body.light-mode .project-card h3, body.light-mode .project-card p { border-color: var(--border-color-light); }
+body.dark-mode .project-card h3, body.dark-mode .project-card p { border-color: var(--border-color-dark); }
+
+
+.project-card a {
+    margin-top: auto;
+    font-weight: bold;
+    text-decoration: none;
+}
+body.light-mode .project-card a { color: var(--link-color-light); }
+body.dark-mode .project-card a { color: var(--link-color-dark); }
+
+/* Contact Section */
+#contact {
+    text-align: center;
+}
+.contact-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.contact-button {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+.contact-button:hover {
+    transform: translateY(-3px);
+}
+body.light-mode .contact-button {
+    color: var(--text-color-light);
+    border-color: var(--border-color-light);
+}
+body.dark-mode .contact-button {
+    color: var(--text-color-dark);
+    border-color: var(--border-color-dark);
+}
+body.light-mode .contact-button:hover {
+    background-color: var(--text-color-light);
+    color: var(--bg-color-light);
+}
+body.dark-mode .contact-button:hover {
+    background-color: var(--text-color-dark);
+    color: var(--bg-color-dark);
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
