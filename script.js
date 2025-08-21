@@ -38,4 +38,21 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('mousemove', updateCursorPosition);
     }
 
+    // --- Contact Form ---
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        const subject = `Message from ${name} via your portfolio`;
+        const body = `${message}\n\nFrom: ${name}\nEmail: ${email}`;
+
+        window.location.href = `mailto:levipronkjones1@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+
+    // --- Dynamic Copyright Year ---
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
 });
