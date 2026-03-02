@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                entry.target.classList.remove('section-dimmed');
+            } else {
+                entry.target.classList.remove('visible');
+                entry.target.classList.remove('section-dimmed');
             }
         });
     }, {
@@ -53,12 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sections.forEach(section => {
-        // Make #about visible immediately, observe the rest
+        // Pre-add visible to #about to prevent a flash before the observer fires
         if (section.id === 'about') {
             section.classList.add('visible');
-        } else {
-            revealObserver.observe(section);
         }
+        revealObserver.observe(section);
     });
 
     // --- Active Nav Link on Scroll ---
@@ -70,6 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
                 if (activeLink) activeLink.classList.add('active');
+
+                // Dim all other visible sections for the "grey outside" effect
+                sections.forEach(s => {
+                    if (s.classList.contains('visible')) {
+                        s.classList.toggle('section-dimmed', s !== entry.target);
+                    }
+                });
             }
         });
     }, {
