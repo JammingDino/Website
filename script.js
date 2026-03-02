@@ -38,20 +38,63 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('mousemove', updateCursorPosition);
     }
 
-    // --- Contact Form ---
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // --- Scroll-Reveal Animations ---
+    const sections = document.querySelectorAll('section');
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-
-        const subject = `Message from ${name} via your portfolio`;
-        const body = `${message}\n\nFrom: ${name}\nEmail: ${email}`;
-
-        window.location.href = `mailto:levipronkjones1@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
     });
+
+    sections.forEach(section => {
+        // Make #about visible immediately, observe the rest
+        if (section.id === 'about') {
+            section.classList.add('visible');
+        } else {
+            revealObserver.observe(section);
+        }
+    });
+
+    // --- Active Nav Link on Scroll ---
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '-80px 0px -50% 0px'
+    });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    // --- Contact Form (only if element exists) ---
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const subject = `Message from ${name} via your portfolio`;
+            const mailBody = `${message}\n\nFrom: ${name}\nEmail: ${email}`;
+
+            window.location.href = `mailto:levipronkjones1@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailBody)}`;
+        });
+    }
 
     // --- Dynamic Copyright Year ---
     document.getElementById('copyright-year').textContent = new Date().getFullYear();
