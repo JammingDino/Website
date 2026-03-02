@@ -19,6 +19,11 @@
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <button id="theme-toggle" title="Toggle Theme">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30"><path d="M 14.984375 0.98632812 A 1.0001 1.0001 0 0 0 14 2 L 14 5 A 1.0001 1.0001 0 1 0 16 5 L 16 2 A 1.0001 1.0001 0 0 0 14.984375 0.98632812 z M 5.796875 4.7988281 A 1.0001 1.0001 0 0 0 5.1015625 6.515625 L 7.2226562 8.6367188 A 1.0001 1.0001 0 1 0 8.6367188 7.2226562 L 6.515625 5.1015625 A 1.0001 1.0001 0 0 0 5.796875 4.7988281 z M 24.171875 4.7988281 A 1.0001 1.0001 0 0 0 23.484375 5.1015625 L 21.363281 7.2226562 A 1.0001 1.0001 0 1 0 22.777344 8.6367188 L 24.898438 6.515625 A 1.0001 1.0001 0 0 0 24.171875 4.7988281 z M 15 8 A 7 7 0 0 0 8 15 A 7 7 0 0 0 15 22 A 7 7 0 0 0 22 15 A 7 7 0 0 0 15 8 z M 2 14 A 1.0001 1.0001 0 1 0 2 16 L 5 16 A 1.0001 1.0001 0 1 0 5 14 L 2 14 z M 25 14 A 1.0001 1.0001 0 1 0 25 16 L 28 16 A 1.0001 1.0001 0 1 0 28 14 L 25 14 z M 7.9101562 21.060547 A 1.0001 1.0001 0 0 0 7.2226562 21.363281 L 5.1015625 23.484375 A 1.0001 1.0001 0 1 0 6.515625 24.898438 L 8.6367188 22.777344 A 1.0001 1.0001 0 0 0 7.9101562 21.060547 z M 22.060547 21.060547 A 1.0001 1.0001 0 0 0 21.363281 22.777344 L 23.484375 24.898438 A 1.0001 1.0001 0 1 0 24.898438 23.484375 L 22.777344 21.363281 A 1.0001 1.0001 0 0 0 22.060547 21.060547 z M 14.984375 23.986328 A 1.0001 1.0001 0 0 0 14 25 L 14 28 A 1.0001 1.0001 0 1 0 16 28 L 16 25 A 1.0001 1.0001 0 0 0 14.984375 23.986328 z"></path></svg>
                 <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-3.51 1.713-6.635 4.398-8.552a.75.75 0 01.818.162z" clip-rule="evenodd" /></svg>
@@ -32,7 +37,7 @@
                 <h1>Levi Pronk-Jones</h1>
                 <h2>Creative Developer & Problem Solver</h2>
                 <p class="intro">
-                    A passionate developer with an interest in creating and building new things. I enjoy turning complex problems into elegant, user-friendly applications. Explore my projects below to see my work.
+                    A passionate developer who loves building things — from desktop tools and Minecraft mods to games and websites. Explore my projects below.
                 </p>
             </div>
         </section>
@@ -42,7 +47,7 @@
 
             <div class="skill-section">
                 <h3>Python</h3>
-                <p class="skill-description">I use Python to turn ideas into automated solutions. I leverage its powerful scripting capabilities to automate repetitive tasks and build efficient data processing pipelines. Furthermore, I have experience developing full-fledged desktop applications with libraries like CustomTkinter, creating intuitive tools that solve specific user needs.</p>
+                <p class="skill-description">I use Python to automate tasks and build efficient tooling, with hands-on experience creating desktop applications using libraries like CustomTkinter.</p>
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-card-image">
@@ -50,7 +55,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Datapack to Fabric Mod Converter</h3>
-                            <p>A standalone desktop application developed with Python and CustomTkinter that streamlines the process of converting Minecraft datapacks into fully functional Fabric mods. The tool features an intuitive graphical user interface (GUI) that allows users to simply select their datapack, and the application handles the rest. It automatically generates the necessary metadata, compiles the code, and packages everything into a distributable .jar file, significantly reducing the complexity and time required for mod creation.</p>
+                            <p>A Python desktop app built with CustomTkinter that automates the conversion of Minecraft datapacks into Fabric mods. Select a datapack and it handles metadata generation, compilation, and packaging into a distributable <code>.jar</code> — no manual steps required.</p>
                             <div class="project-tags">
                                 <span>Python</span>
                                 <span>CustomTkinter</span>
@@ -65,7 +70,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Smart AutoClicker</h3>
-                            <p>A comprehensive desktop automation tool built with Python and the modern Flet framework. This application provides a user-friendly interface for both simple auto-clicking and complex macro recording. Users can set custom click delays, record mouse actions, and play them back with looping capabilities. The tool also offers advanced features like editing macros, saving/loading from files, and applying global delays, making it a versatile solution for automating repetitive tasks.</p>
+                            <p>A desktop automation tool built with Python and Flet. Supports simple auto-clicking and full macro recording with playback, custom delays, loop controls, and save/load functionality — ideal for eliminating repetitive tasks.</p>
                             <div class="project-tags">
                                 <span>Python</span>
                                 <span>Flet</span>
@@ -80,7 +85,7 @@
 
             <div class="skill-section">
                 <h3>Minecraft Mod Development</h3>
-                <p class="skill-description">My Java experience is centered on the Minecraft ecosystem, where I use the Fabric API to develop custom mods. This involves everything from creating new items and game mechanics to designing complex systems that interact with the game's core logic. My projects on CurseForge showcase my ability to deliver polished and functional content to a large user base.</p>
+                <p class="skill-description">I develop Minecraft mods using the Fabric API — from new items and game mechanics to complex systems that interact with the game's core logic.</p>
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-card-image">
@@ -88,7 +93,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>CurseForge Projects</h3>
-                            <p>A portfolio of my published Minecraft mods on CurseForge, one of the largest platforms for Minecraft content. These projects, developed using Java and the Fabric API, have garnered hundreds of thousands of downloads and positive feedback from the player community. This collection showcases my ability to create, maintain, and support polished, user-friendly content for a large audience, demonstrating my expertise in game modification and community engagement.</p>
+                            <p>A collection of published Minecraft mods on CurseForge with hundreds of thousands of downloads. Built with Java and the Fabric API, these projects showcase polished, community-focused content and long-term maintenance.</p>
                             <div class="project-tags">
                                 <span>Java</span>
                                 <span>Minecraft</span>
@@ -103,7 +108,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Modrinth Projects</h3>
-                            <p>A showcase of my Minecraft mods available on Modrinth, a modern platform for game modifications. These projects highlight my proficiency with Java and the Fabric API, and have been downloaded thousands of times. My presence on Modrinth reflects my commitment to the open-source community and my ability to adapt to new platforms and standards in the modding ecosystem.</p>
+                            <p>My Minecraft mods on Modrinth, downloaded thousands of times. Built with Java and the Fabric API, these projects reflect my commitment to open-source modding and staying current with community platforms.</p>
                             <div class="project-tags">
                                 <span>Java</span>
                                 <span>Minecraft</span>
@@ -117,7 +122,7 @@
 
             <div class="skill-section">
                 <h3>Godot Game Development</h3>
-                <p class="skill-description">I utilize the Godot Engine for both game development and the creation of interactive simulations. With its powerful 2D/3D rendering capabilities and intuitive GDScript language, I can build everything from engaging gameplay mechanics to complex simulations that require robust physics and visual fidelity. This skillset is ideal for projects that demand high-performance, real-time graphics.</p>
+                <p class="skill-description">I build games and interactive simulations with the Godot Engine, using its 2D/3D rendering and GDScript for real-time, high-performance experiences.</p>
                 <div class="project-grid">
                     <!-- Add Godot project cards here when ready -->
                     <div class="project-card placeholder">
@@ -126,7 +131,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Upcoming Game Project</h3>
-                            <p>Currently in development, this upcoming 2D platformer is being built with the Godot Engine, leveraging its powerful features for physics, animation, and level design. The project is a testament to my skills in game development, from initial concept and prototyping to implementation of core mechanics and gameplay loops. More details and a playable demo will be available soon.</p>
+                            <p>An upcoming 2D platformer in active development with Godot Engine, focusing on physics, animation, and engaging gameplay loops. A playable demo will be available soon.</p>
                             <div class="project-tags">
                                 <span>Godot</span>
                                 <span>GDScript</span>
@@ -141,7 +146,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Itch.io Profile</h3>
-                            <p>My personal Itch.io profile, which serves as a gallery for my independent game development projects and game jam submissions. Here you can find a variety of games I have worked on, both solo and in collaboration with friends. This profile highlights my passion for creative expression through interactive media and my ability to rapidly prototype and develop game concepts under tight deadlines.</p>
+                            <p>My Itch.io profile showcases indie games and game jam submissions, built solo and with collaborators. Highlights my passion for creative interactive media and rapid prototyping under tight deadlines.</p>
                             <div class="project-tags">
                                 <span>Game Jams</span>
                                 <span>Godot</span>
@@ -155,7 +160,7 @@
             
             <div class="skill-section">
                 <h3>Android App Development</h3>
-                <p class="skill-description">I develop cross-platform mobile applications using React Native, which allows for building a single app that runs seamlessly on both Android and iOS. My focus is on creating responsive, performant, and user-friendly mobile experiences by leveraging modern JavaScript principles and native component integrations.</p>
+                <p class="skill-description">I build cross-platform mobile apps with React Native, targeting both Android and iOS with a single codebase focused on performance and clean UX.</p>
                 <div class="project-grid">
                     <!-- Add Android project cards here when ready -->
                     <div class="project-card placeholder">
@@ -164,7 +169,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Utility App Concept</h3>
-                            <p>I am currently in the conceptual phase of designing a cross-platform utility application using React Native. The goal is to create a lightweight, intuitive, and useful tool for everyday tasks. This project will demonstrate my ability to take an idea from concept to a fully-fledged mobile application, with a focus on user experience and performance. Development updates and a public beta will be announced in the near future.</p>
+                            <p>A cross-platform utility app in early design, being built with React Native. Goal: a lightweight, intuitive tool for everyday tasks on both Android and iOS. Public beta coming soon.</p>
                             <div class="project-tags">
                                 <span>React Native</span>
                                 <span>Android</span>
@@ -178,7 +183,7 @@
 
             <div class="skill-section">
                 <h3>Web Technologies</h3>
-                <p class="skill-description">I build modern, responsive, and interactive websites using foundational web technologies like HTML, CSS, and JavaScript. My focus is on writing clean, semantic code that provides a great user experience across all devices.</p>
+                <p class="skill-description">I build modern, responsive websites with HTML, CSS, and JavaScript — clean, semantic code that delivers a great experience across all devices.</p>
                 <div class="project-grid">
                     <div class="project-card">
                         <div class="project-card-image">
@@ -186,7 +191,7 @@
                         </div>
                         <div class="project-card-content">
                             <h3>Portfolio Website</h3>
-                            <p>The website you are currently viewing is a testament to my skills in front-end web development. Built from the ground up using HTML, CSS, and JavaScript, it features a clean, modern, and fully responsive design that adapts to any screen size. A unique feature of this site is the custom mouse-tracking glow effect, which was implemented to create a more engaging and interactive user experience. The entire project is open-source and available on my GitHub.</p>
+                            <p>This site — built from scratch with HTML, CSS, and JavaScript. Features a responsive layout, dark/light theme toggle, custom mouse-glow spotlight, per-card scroll-reveal animations, and a fixed sidebar nav. Open-source on GitHub.</p>
                             <div class="project-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
@@ -203,9 +208,9 @@
             <h2>Education</h2>
             <div class="skill-section">
                 <h3>University of Canterbury</h3>
-                <p class="skill-description">Currently pursuing a Bachelor of Science in Computer Science, where I am deepening my understanding of fundamental and advanced concepts in software development, algorithms, and data structures. My coursework has provided me with a strong theoretical foundation, which I apply to my personal projects and work.</p>
-                <h3>Hagley Community Collage - Te Puna Wai O Waipapa</h3>
-                <p class="skill-description">I completed my pre-university studies at Hagley, where I honed my problem-solving and analytical skills. This experience was foundational in preparing me for the rigors of a university-level computer science program and sparked my passion for software development.</p>
+                <p class="skill-description">Currently pursuing a Bachelor of Science in Computer Science at the University of Canterbury, deepening my understanding of algorithms, data structures, and software engineering.</p>
+                <h3>Hagley Community College — Te Puna Wai O Waipapa</h3>
+                <p class="skill-description">Completed pre-university studies here, building strong problem-solving and analytical foundations that sparked my passion for software development.</p>
             </div>
         </section>
 
@@ -213,9 +218,9 @@
             <h2>Experience</h2>
             <div class="skill-section">
                 <h3>Competitive Programming & Awards</h3>
-                <p class="skill-description">I have actively participated in and excelled at various programming competitions. I achieved the top score in Canterbury in the Bebras Challenge, a testament to my problem-solving and computational thinking abilities. Additionally, I have competed in multiple coding competitions hosted by the University of Canterbury, where I have consistently performed well against my peers. These experiences have sharpened my skills in algorithmic thinking and efficient coding under pressure.</p>
+                <p class="skill-description">Achieved the top score in Canterbury in the Bebras Challenge and consistently placed well in University of Canterbury coding competitions, sharpening algorithmic thinking under pressure.</p>
                 <h3>AEC-Electronics</h3>
-                <p class="skill-description">During my time at AEC-Electronics, I gained valuable hands-on experience in a professional electronics and software development environment. I was involved in the full product lifecycle, from initial design and prototyping to testing and deployment. This role allowed me to apply my technical skills to real-world challenges and collaborate with a team of experienced engineers, further developing my practical and professional capabilities.</p>
+                <p class="skill-description">Hands-on professional experience across the full product lifecycle — design, prototyping, testing, and deployment — in a real-world electronics and software environment, working alongside experienced engineers.</p>
             </div>
         </section>
 

@@ -64,13 +64,56 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(section);
     });
 
+    // --- Per-card Scroll-Reveal Animations ---
+    const cards = document.querySelectorAll('.project-card');
+    const CARD_STAGGER_MS = 90;
+
+    // Stagger cards within the same grid
+    document.querySelectorAll('.project-grid').forEach(grid => {
+        grid.querySelectorAll('.project-card').forEach((card, i) => {
+            card.style.transitionDelay = `${i * CARD_STAGGER_MS}ms`;
+        });
+    });
+
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    cards.forEach(card => cardObserver.observe(card));
+
+    // --- Hamburger Menu ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
     // --- Active Nav Link on Scroll ---
-    const navLinks = document.querySelectorAll('.nav-link');
+    const allNavLinks = document.querySelectorAll('.nav-link');
 
     const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navLinks.forEach(link => link.classList.remove('active'));
+                allNavLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
                 if (activeLink) activeLink.classList.add('active');
 
