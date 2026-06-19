@@ -1,42 +1,39 @@
-# Personal Portfolio Website
+# Levi Pronk-Jones — Portfolio
 
-This is the source code for my personal portfolio website, designed to showcase my skills and projects in a clean, professional, and modern interface. The site is built from scratch using fundamental web technologies and is hosted using GitHub Pages.
+An awwwards-style personal portfolio for **Levi Pronk-Jones**, a software engineer based in Christchurch, NZ. Built from scratch with plain HTML, CSS, and JavaScript — no build step, GitHub Pages friendly.
 
-**Live Demo:** [https://jammingdino.github.io/Website/](https://jammingdino.github.io/Website/)
+## Design
 
-## Features
+A near-monochrome dark "ink" theme with a single molten-orange accent (`#ff4d00`). Type is set in Space Grotesk (display), Inter (body), and JetBrains Mono (labels). The site features a custom cursor, an animated mesh-canvas hero, a film-grain overlay, scroll-reveal animations, and a shared media-preview modal for project case studies.
 
-- **Responsive Design:** The layout is fully responsive and works seamlessly on desktops, tablets, and mobile devices.
-- **Light & Dark Mode:** A sleek theme toggle allows users to switch between a light and dark color scheme, with their preference saved in their browser.
-- **Interactive Mouse Spotlight:** A subtle, radial gradient follows the user's cursor, adding a modern and dynamic feel to the user experience.
-- **Pure JavaScript:** All interactivity is handled with clean, dependency-free vanilla JavaScript.
-- **Structured Project Showcase:** Projects are organized by skill, with detailed descriptions for each area of expertise.
-- **Easy to Customize:** Built with clean HTML and well-commented CSS, making it straightforward to adapt for personal use.
+## Sections
 
-## Built With
+- **Hero** — animated canvas backdrop and intro
+- **Selected Work** — three feature projects (Chemistry Simulator, Minecraft Mods, MultiZone) that open a detail modal
+- **The Lab** — smaller experiments and open-source builds
+- **About** — capabilities, toolkit, and stats
+- **Contact** — email and social links
 
-- **HTML5:** For the core structure and content.
-- **CSS3:** For all styling, including the responsive layout, themes, and animations.
-- **Vanilla JavaScript:** For theme toggling and DOM manipulation.
+## Structure
 
-## How to Use This Template
+```
+index.html    # Markup and project content (data-* attributes drive the modal)
+style.css     # Theme tokens, layout, and animations
+script.js     # Preloader, cursor, mesh canvas, scroll reveals, modal
+assets/       # Project imagery (PNG/JPG screenshots + SVG posters)
+```
 
-You are welcome to fork this repository and adapt it for your own personal portfolio.
+## Running locally
 
-1.  **Fork the Repository:** Click the "Fork" button at the top right of the GitHub page.
-2.  **Clone Your Fork:** Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/YOUR_USERNAME/Website.git
-    ```
-3.  **Customize Content:**
-    -   Open `index.html` to change the text, project details, and contact links.
-    -   Open `style.css` to adjust colors and fonts in the `:root` section.
-4.  **Push to Your Repository:** Commit and push your changes.
-5.  **Enable GitHub Pages:**
-    -   In your forked repository's settings, go to the "Pages" tab.
-    -   Select the `main` branch (or `master`) as your source and click "Save".
-    -   Your new portfolio will be live at `https://YOUR_USERNAME.github.io/Website/`.
+It's a static site — open `index.html` directly, or serve the folder:
+
+```bash
+python -m http.server 8000
+# then visit http://localhost:8000
+```
+
+Add `?instant` to the URL to skip the preloader and reveal all sections immediately (handy for development).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+See [LICENSE](LICENSE).
