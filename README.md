@@ -17,11 +17,26 @@ A near-monochrome dark "ink" theme with a single molten-orange accent (`#ff4d00`
 ## Structure
 
 ```
-index.html    # Markup and project content (data-* attributes drive the modal)
-style.css     # Theme tokens, layout, and animations
-script.js     # Preloader, cursor, mesh canvas, scroll reveals, modal
-assets/       # Project imagery (PNG/JPG screenshots + SVG posters)
+index.html         # Markup and project content (data-* attributes drive the modal)
+style.css          # Theme tokens, layout, and animations
+script.js          # Preloader, cursor, mesh canvas, scroll reveals, modal, live stats
+assets/            # Project imagery (PNG/JPG screenshots + SVG posters)
+assets/stats.json  # Download totals (see "Mod download counter" below)
 ```
+
+## Mod download counter
+
+The "Mod downloads" stat and the Minecraft card's figure are populated on page
+load. **Modrinth** exposes an open-CORS public API, so its total is fetched live
+in the browser from `api.modrinth.com`. **CurseForge** is behind Cloudflare and a
+keyed API with no browser CORS, so it can't be scraped client-side — its total is
+stored in [`assets/stats.json`](assets/stats.json) and summed with the live
+Modrinth count.
+
+To keep it current, edit `curseforge` in `assets/stats.json` with the combined
+total from your CurseForge dashboard. (To fully automate it you'd add a scheduled
+GitHub Action that calls the CurseForge API with a `CURSEFORGE_API_KEY` secret and
+commits the updated JSON — not wired up yet.)
 
 ## Running locally
 

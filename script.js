@@ -222,7 +222,7 @@
         const start = vh * 0.85, end = vh * 0.3;
         const progress = Math.min(1, Math.max(0, (start - rect.top) / (start - end)));
         const lit = Math.floor(progress * words.length);
-        words.forEach((wd, i) => { wd.style.opacity = i < lit ? "1" : "0.16"; });
+        words.forEach((wd, i) => { wd.style.opacity = i < lit ? "1" : "0.4"; });
       };
       window.addEventListener("scroll", reveal, { passive: true });
       reveal();
@@ -253,6 +253,68 @@
       });
     }, { threshold: 0.5 });
     els.forEach((el) => io.observe(el));
+  }
+
+  /* ---------------------------------------------------------
+     LIVE DOWNLOAD STATS
+     Modrinth has an open-CORS public API, so its total is fetched
+     live in the browser. CurseForge is Cloudflare/API-key gated and
+     can't be reached client-side, so its figure is stored in
+     assets/stats.json and summed with the live Modrinth count.
+  --------------------------------------------------------- */
+  function initStats() {
+    const els = $$("[data-downloads]");
+    if (!els.length) return;
+
+    const fmtK = (n) => (n >= 1000 ? Math.floor(n / 1000) + "K+" : String(n));
+
+    const animate = (el, target) => {
+      if (prefersReduced) { el.textContent = fmtK(target); return; }
+      const dur = 1200, t0 = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmtK(Math.round(target * eased));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    (async () => {
+      // Fallbacks keep the page accurate even fully offline.
+      let curseforge = 431224, modrinth = 18776;
+
+      try {
+        const s = await fetch("assets/stats.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null));
+        if (s) {
+          if (typeof s.curseforge === "number") curseforge = s.curseforge;
+          if (typeof s.modrinthFallback === "number") modrinth = s.modrinthFallback;
+        }
+      } catch (_) { /* keep fallback */ }
+
+      try {
+        const projects = await fetch("https://api.modrinth.com/v2/user/JammingDino/projects")
+          .then((r) => (r.ok ? r.json() : null));
+        if (Array.isArray(projects)) {
+          modrinth = projects.reduce((sum, p) => sum + (p.downloads || 0), 0);
+        }
+      } catch (_) { /* keep fallback */ }
+
+      const total = curseforge + modrinth;
+      els.forEach((el) => animate(el, total));
+
+      // Keep the Minecraft modal's copy in sync with the live figure.
+      const mc = $("#mcProject");
+      if (mc) {
+        mc.dataset.meta = "JAVA · " + total.toLocaleString() + "+ DOWNLOADS";
+        if (mc.dataset.highlights) {
+          mc.dataset.highlights = mc.dataset.highlights.replace(
+            /^[^|]*/,
+            total.toLocaleString() + "+ combined downloads across CurseForge & Modrinth"
+          );
+        }
+      }
+    })();
   }
 
   /* ---------------------------------------------------------
@@ -437,6 +499,7 @@
     initMesh();
     initReveal();
     initCounters();
+    initStats();
     initScroll();
     initNav();
     initInteractions();
