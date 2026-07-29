@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Levi Pronk-Jones — Software & Embedded Systems Engineer</title>
-<meta name="description" content="Levi Pronk-Jones builds software and embedded systems — backend, agentic AI, automation, and the hardware they run on." />
+<meta name="description" content="Levi Pronk-Jones is a mechatronics engineering student in Christchurch, NZ. Rust and Python backends, agent tooling, and firmware. Half a million downloads of published Java mods." />
 <meta name="theme-color" content="#0a0a0a" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Levi Pronk-Jones — Software & Mechatronics Engineer" />
-<meta property="og:description" content="Engineering software end to end — from systems and embedded firmware up to the interface." />
+<meta property="og:title" content="Levi Pronk-Jones — Software &amp; Embedded Systems Engineer" />
+<meta property="og:description" content="Most of what I build is the part nobody sees. Backends, agent loops, and firmware talking to hardware over SPI and I²C." />
 <meta property="og:type" content="website" />
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -47,10 +47,11 @@
   </a>
 
   <nav class="nav__links" id="navLinks" aria-label="Primary">
-    <a href="#work"    class="nav__link" data-cursor="link"><span class="mono nav__num">01</span> Work</a>
-    <a href="#lab"     class="nav__link" data-cursor="link"><span class="mono nav__num">02</span> Lab</a>
-    <a href="#about"   class="nav__link" data-cursor="link"><span class="mono nav__num">03</span> About</a>
-    <a href="#contact" class="nav__link" data-cursor="link"><span class="mono nav__num">04</span> Contact</a>
+    <a href="#work"       class="nav__link" data-cursor="link"><span class="mono nav__num">01</span> Work</a>
+    <a href="#experience" class="nav__link" data-cursor="link"><span class="mono nav__num">02</span> Experience</a>
+    <a href="#lab"        class="nav__link" data-cursor="link"><span class="mono nav__num">03</span> Lab</a>
+    <a href="#about"      class="nav__link" data-cursor="link"><span class="mono nav__num">04</span> About</a>
+    <a href="#contact"    class="nav__link" data-cursor="link"><span class="mono nav__num">05</span> Contact</a>
   </nav>
 
   <div class="nav__status mono">
@@ -90,16 +91,17 @@
 
       <div class="hero__bottom">
         <p class="hero__lede reveal-fade" data-reveal>
-          I’m <strong>Levi Pronk-Jones</strong>, a mechatronics-engineering student who builds software
-          end to end — backend systems, agentic AI, automation and the embedded hardware they run on.
-          I spend most of my time below the surface, with enough design sense to make what I ship usable.
+          I’m <strong>Levi Pronk-Jones</strong>, a mechatronics engineering student in Christchurch.
+          Most of what I build is the part nobody sees: Rust and Python backends, agent loops, and
+          firmware talking to hardware over SPI and I²C. The Java mods I publish on the side have
+          passed half a million downloads.
         </p>
         <div class="hero__actions reveal-fade" data-reveal>
           <a href="#work" class="btn btn--primary" data-cursor="link">
             <span>Selected Work</span>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#contact" class="btn btn--ghost" data-cursor="link">Start a project</a>
+          <a href="#contact" class="btn btn--ghost" data-cursor="link">Email me</a>
         </div>
       </div>
     </div>
@@ -113,18 +115,22 @@
   <!-- ═══════════════ MARQUEE ═══════════════ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span>Backend Engineering</span><span class="marquee__star">✳</span>
-      <span>Embedded Systems</span><span class="marquee__star">✳</span>
-      <span>Agentic AI</span><span class="marquee__star">✳</span>
-      <span>System Architecture</span><span class="marquee__star">✳</span>
-      <span>APIs &amp; Tooling</span><span class="marquee__star">✳</span>
-      <span>Automation</span><span class="marquee__star">✳</span>
-      <span>Backend Engineering</span><span class="marquee__star">✳</span>
-      <span>Embedded Systems</span><span class="marquee__star">✳</span>
-      <span>Agentic AI</span><span class="marquee__star">✳</span>
-      <span>System Architecture</span><span class="marquee__star">✳</span>
-      <span>APIs &amp; Tooling</span><span class="marquee__star">✳</span>
-      <span>Automation</span><span class="marquee__star">✳</span>
+      <span>Rust</span><span class="marquee__star">✳</span>
+      <span>SPI / I²C / UART</span><span class="marquee__star">✳</span>
+      <span>Tauri</span><span class="marquee__star">✳</span>
+      <span>Python</span><span class="marquee__star">✳</span>
+      <span>Layer-2 bridging</span><span class="marquee__star">✳</span>
+      <span>Godot</span><span class="marquee__star">✳</span>
+      <span>Java</span><span class="marquee__star">✳</span>
+      <span>Raspberry Pi</span><span class="marquee__star">✳</span>
+      <span>Rust</span><span class="marquee__star">✳</span>
+      <span>SPI / I²C / UART</span><span class="marquee__star">✳</span>
+      <span>Tauri</span><span class="marquee__star">✳</span>
+      <span>Python</span><span class="marquee__star">✳</span>
+      <span>Layer-2 bridging</span><span class="marquee__star">✳</span>
+      <span>Godot</span><span class="marquee__star">✳</span>
+      <span>Java</span><span class="marquee__star">✳</span>
+      <span>Raspberry Pi</span><span class="marquee__star">✳</span>
     </div>
   </div>
 
@@ -133,28 +139,57 @@
     <div class="section-head">
       <span class="section-head__tag mono" data-reveal>// 01 — SELECTED WORK</span>
       <h2 class="section-head__title" data-reveal>Things I’ve<br/>shipped.</h2>
-      <p class="section-head__note mono" data-reveal>2021 — 2025</p>
+      <p class="section-head__note mono" data-reveal>2023 – 2026</p>
     </div>
 
     <ol class="projects">
-      <!-- Project 01 — Chemistry Simulator -->
+      <!-- Project 01 — MultiZone -->
+      <li class="project" data-reveal>
+        <button type="button" class="project__inner" data-cursor="view" data-tilt
+          data-title="MultiZone"
+          data-meta="TAURI 2 · RUST · REACT 19 / TS · 2025–26"
+          data-media="assets/multizone-perspectives.jpg"
+          data-desc="A desktop chat app for people who keep a browser tab open per model. You configure &ldquo;zones&rdquo; — a zone is one provider, one model, one system prompt, one toolset — and send a single message to as many of them as you like. The replies stream back in parallel columns of one shared thread. It runs on your machine, stores everything in local SQLite, and works with any OpenAI-compatible endpoint, including a model on your own GPU."
+          data-highlights="Perspective mode fans one message out to every zone at once. There is no cap: one zone or twenty, frontier APIs and local models mixed freely, and each zone can see what the others said on previous turns.|Multizone mode goes further. A zone flagged as Response Leader never answers from its own knowledge — it spawns a panel of sub-agents, briefs each on a deliberately opposing angle rather than forwarding your message, puts the best objection back to the agent who has to answer it, and only then writes one reconciled answer. Sub-agents cannot talk to you; the leader is the only voice you hear.|The whole leader → sub-agent call tree is inspectable inline, with every subchat transcript openable, so you can see which argument actually moved the answer.|Web research needs no API key and no third-party search service. smart_search queries seven keyless engines in parallel and merges them with Reciprocal Rank Fusion, so a page several engines agree on ranks highest, and it reports which engines answered and which got blocked.|Search only works because the HTTP client carries a real Chrome TLS and HTTP/2 fingerprint (wreq over BoringSSL). An ordinary Rust client gets fingerprinted as a bot and served a challenge instead of results. No headless browser ships with the app.|A local HTTP API (axum, bound to 127.0.0.1 behind a bearer token) exposes the same agentic loop over REST and Server-Sent Events, so scripts can drive the app and the changes appear live in any open window.|Streaming agentic loop with tool execution, safety-level gating and explicit user approval, marshalled across the Rust/JS boundary; Zustand holds concurrent streams, approvals and live per-message generation stats."
+          data-gallery="Perspective mode: one message box, one history, every zone answering in parallel::assets/multizone-perspectives.jpg|Multizone mode: the leader briefs a panel to disagree, then reconciles it into one answer::assets/multizone-leader.jpg|Four models answering the same prompt in the app itself::assets/multizone-dark.jpg|The same conversation in the light theme. The whole UI runs on CSS variables.::assets/multizone-light.jpg"
+          data-note="Private repo while the app is in development. Happy to demo it or walk through the architecture."
+          data-tags="Rust, Tauri 2, React 19, TypeScript, SQLite, axum, Agentic AI">
+          <div class="project__visual">
+            <img src="assets/multizone-perspectives.jpg" alt="Diagram: one message fanning out to four model zones answering in parallel" loading="lazy" />
+          </div>
+          <div class="project__body">
+            <span class="project__index mono">01</span>
+            <div class="project__lines">
+              <h3 class="project__name">MultiZone</h3>
+              <p class="project__desc">A Tauri + Rust desktop chat app that sends one message to as many models as you want and streams the answers side by side. It can also put them on a panel, make them argue, and hand you the one answer that survived.</p>
+              <ul class="project__tags mono">
+                <li>Rust</li><li>Tauri</li><li>React</li>
+              </ul>
+            </div>
+            <span class="project__year mono">2026</span>
+            <span class="project__cta mono">VIEW CASE <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+        </button>
+      </li>
+
+      <!-- Project 02 — Chemistry Simulator -->
       <li class="project" data-reveal>
         <button type="button" class="project__inner" data-cursor="view" data-tilt
           data-title="Chemistry Simulator &amp; Visualizer"
           data-meta="GODOT 4 · GDSCRIPT · 2024"
           data-media="assets/chemistry.png"
-          data-desc="A real-time 3D molecular visualisation tool built in Godot 4, implementing a physics-based VSEPR model. Atoms attract and repel along their bonds until they settle into geometrically accurate configurations — the shapes emerge from the simulation rather than being hard-coded."
-          data-highlights="Physics-based VSEPR — distance-based attraction &amp; repulsion forces resolve real molecular geometry|Pre-built library of 13+ elements with dynamic, real-time bond rendering|Interactive editing of scale, colour, valence and bond type|🏆 2nd Place — UC Science Fair (Technology &amp; Chemistry)"
+          data-desc="A 3D molecular visualiser built in Godot 4 around a physics-based VSEPR model. Nothing about the molecular shapes is hard-coded. Every atom simply attracts and repels its neighbours along its bonds, and the correct geometry falls out of running the simulation until it settles."
+          data-highlights="Distance-based attraction and repulsion forces resolve real VSEPR geometry, from tetrahedral carbon in methane to the planar ring in benzene, with no lookup table anywhere|A library of 13+ elements, with bonds rendered live as the structure relaxes|You can edit scale, colour, valence count and bond type on any particle while the simulation is running|Second place at the NIWA Canterbury Science &amp; Technology Fair"
           data-tags="Godot 4, GDScript, 3D Simulation, VSEPR"
           data-links="GitHub::https://github.com/JammingDino/VSEPR">
           <div class="project__visual">
-            <img src="assets/chemistry.png" alt="Chemistry Simulator — 3D molecule with a particle configuration panel" loading="lazy" />
+            <img src="assets/chemistry.png" alt="Chemistry Simulator showing a 3D molecule beside a particle configuration panel" loading="lazy" />
           </div>
           <div class="project__body">
-            <span class="project__index mono">01</span>
+            <span class="project__index mono">02</span>
             <div class="project__lines">
               <h3 class="project__name">Chemistry Simulator</h3>
-              <p class="project__desc">A real-time 3D molecular visualiser with a physics-based VSEPR model — atoms settle into accurate geometry on their own. Won 2nd place at the UC Science Fair.</p>
+              <p class="project__desc">A 3D molecular visualiser where the shapes aren’t hard-coded. Atoms push and pull on each other until real VSEPR geometry falls out. Second place at the NIWA Canterbury Science Fair.</p>
               <ul class="project__tags mono">
                 <li>Godot 4</li><li>GDScript</li><li>3D Simulation</li>
               </ul>
@@ -164,61 +199,123 @@
           </div>
         </button>
       </li>
-
-      <!-- Project 02 — Minecraft Mods -->
+      <!-- Project 03 — Minecraft Mods -->
       <li class="project" data-reveal>
         <button type="button" class="project__inner" id="mcProject" data-cursor="view" data-tilt
           data-title="Minecraft Mod Development"
-          data-meta="JAVA · 450,000+ DOWNLOADS"
+          data-meta="JAVA · 500,000+ DOWNLOADS"
           data-media="assets/minecraft.jpg"
-          data-desc="A suite of published Minecraft mods with over 450,000 combined downloads across CurseForge and Modrinth — and the ecosystem I built around them: paid feature work, a hosting partnership, and a community-driven roadmap."
-          data-highlights="450,000+ combined downloads across CurseForge &amp; Modrinth|Paid development contracts delivering custom features for content creators (YouTubers)|Affiliate partnership secured with Bisect Hosting|Shipped community-requested features from an active user base"
-          data-tags="Java, Software Design, Version Control, Community"
+          data-desc="Half a million downloads of Java mods, published across CurseForge and Modrinth over several years. Acclaimed Origins is the big one; Skill Tree, Enchanted Origins, Mech Origins and a few others make up the rest. Most of what I learned about shipping software I learned here first: versioning against a moving game API, reading bug reports from people who owe you nothing, and saying no to feature requests."
+          data-highlights="500,000+ combined downloads across CurseForge and Modrinth, run as a live product rather than a dump of finished code|Paid development contracts writing custom features for YouTubers, negotiated and delivered directly|Affiliate partnership with Bisect Hosting, with a discount code that routes back to me|Rather than hard-coding the content, I built an in-game Skill Editor: fill in a form, watch the JSON build itself, and export it straight to a server. Server owners write their own skill trees without touching Java.|WebLib came out of this too: a NeoForge library that lets mod GUIs be written as HTML/CSS/JS instead of Minecraft&rsquo;s own widget code|Ongoing maintenance across Minecraft versions, plus a feature backlog driven by whatever the community actually asked for"
+          data-gallery="Skill Tree: a tiered altar where XP buys permanent upgrades::assets/minecraft-skilltree.jpg|The Skill Editor. Fill in the form, the JSON writes itself, then export it to a server.::assets/minecraft-skill-editor.jpg|Blocks and items added across the mods::assets/minecraft-blocks.jpg|The Bisect Hosting partnership::assets/minecraft-bisect.jpg|Modded storage in a survival world::assets/minecraft.jpg"
+          data-tags="Java, NeoForge, Fabric, Modrinth, CurseForge"
           data-links="CurseForge::https://www.curseforge.com/members/jammingdino/projects | Modrinth::https://modrinth.com/user/JammingDino">
           <div class="project__visual">
             <img src="assets/minecraft.jpg" alt="Minecraft scene showcasing modded items on display frames" loading="lazy" />
           </div>
           <div class="project__body">
-            <span class="project__index mono">02</span>
+            <span class="project__index mono">03</span>
             <div class="project__lines">
               <h3 class="project__name">Minecraft Mods</h3>
-              <p class="project__desc">A suite of published mods with 450,000+ downloads across CurseForge and Modrinth — plus paid creator contracts, a hosting partnership, and an active community.</p>
+              <p class="project__desc">Half a million downloads across CurseForge and Modrinth. Paid contracts with YouTubers, a hosting partnership, and years of maintaining someone else&rsquo;s bug reports.</p>
               <ul class="project__tags mono">
-                <li>Java</li><li>Software Design</li><li>Community</li>
+                <li>Java</li><li>NeoForge</li><li>Fabric</li>
               </ul>
             </div>
-            <span class="project__year mono" data-downloads>450K+</span>
+            <span class="project__year mono" data-downloads>500K+</span>
             <span class="project__cta mono">VIEW CASE <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </div>
         </button>
       </li>
 
-      <!-- Project 03 — MultiZone -->
+      <!-- Project 04 — MTG Proxy Maker -->
       <li class="project" data-reveal>
         <button type="button" class="project__inner" data-cursor="view" data-tilt
-          data-title="MultiZone — LLM Harness"
-          data-meta="TAURI · RUST + REACT/TS · 2025"
-          data-media="assets/multizone.svg"
-          data-desc="A local-first desktop AI chat app with a Tauri + Rust backend and a React/TypeScript front-end. Fully offline and SQLite-backed, built around a streaming agentic loop and a multi-agent orchestration mode."
-          data-highlights="Multi-provider LLM client — per-zone system prompts, models and tool configs|Streaming agentic loop with tool execution, safety-level gating and user approval across the Rust/JS FFI|Multi-agent orchestration — a leader zone coordinates sub-agents via subchats into a single response|Zustand state managing concurrent streams, approvals and live per-message generation stats|Themeable UI with a CSS-variable system, live background effects and a PDF/image attachment pipeline"
-          data-tags="Rust, Tauri, React, TypeScript, SQLite, Agentic AI"
-          data-links="GitHub::https://github.com/JammingDino">
+          data-title="MTG Proxy Maker"
+          data-meta="ELECTRON · VUE 3 · NODE · 2026"
+          data-media="assets/mtg-flow.jpg"
+          data-desc="Turn a folder of art into a stack of print-ready Magic: The Gathering proxies. You bring the art; the app reads the card name off each filename, pulls the real rules text from Scryfall, renders a proper card through Card Conjurer, and writes the finished images out — one after another, unattended."
+          data-highlights="The filename is the entire interface. Name a file &ldquo;Blighted Agent.png&rdquo; and the app has everything it needs; it even tolerates underscores and dashes.|Scryfall supplies the mana cost, type line, oracle text, flavour text, artist credit and stats, so nothing gets retyped or pasted|Card Conjurer only renders one card at a time, so the app loads a real instance of it in an offscreen Electron window and drives it. You get Card Conjurer&rsquo;s output quality across a whole deck.|Each run writes the images, a per-card JSON file and a manifest of what happened, then remembers your folders and settings for next time|Packaged as a Windows installer through electron-builder. A separate showcase script rebuilds the comparison figures in the README from local source art."
+          data-gallery="Art in, card out. The app names it, fills it and renders it.::assets/mtg-flow.jpg|Blighted Agent: the official printing beside the generated proxy::assets/mtg-compare.jpg|Crystalline Crawler: same rules text and stats, new art::assets/mtg-compare-2.jpg"
+          data-note="Card rendering by Card Conjurer, card data by the Scryfall API. Unofficial and not affiliated with Wizards of the Coast. Proxies are for personal and playtest use."
+          data-tags="Electron, Vue 3, Node, Vite, Scryfall API, Batch Automation"
+          data-links="GitHub::https://github.com/JammingDino/MTG-Proxy-Maker">
           <div class="project__visual">
-            <img src="assets/multizone.svg" alt="MultiZone desktop AI chat app interface mockup" loading="lazy" />
+            <img src="assets/mtg-flow.jpg" alt="Three stages: source art, the card data found on Scryfall, and the finished rendered proxy card" loading="lazy" />
           </div>
           <div class="project__body">
-            <span class="project__index mono">03</span>
+            <span class="project__index mono">04</span>
             <div class="project__lines">
-              <h3 class="project__name">MultiZone</h3>
-              <p class="project__desc">A local-first desktop AI chat app — Tauri + Rust with a React/TS front-end, a streaming agentic loop, tool approval, and multi-agent orchestration.</p>
+              <h3 class="project__name">MTG Proxy Maker</h3>
+              <p class="project__desc">A desktop batch renderer for Magic proxies. Drop in a folder of art. It matches each card on Scryfall, drives Card Conjurer headlessly, and writes out a whole deck unattended.</p>
               <ul class="project__tags mono">
-                <li>Rust</li><li>Tauri</li><li>React</li>
+                <li>Electron</li><li>Vue 3</li><li>Node</li>
               </ul>
             </div>
-            <span class="project__year mono">2025</span>
+            <span class="project__year mono">2026</span>
             <span class="project__cta mono">VIEW CASE <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </div>
         </button>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <section class="exp" id="experience">
+    <div class="section-head">
+      <span class="section-head__tag mono" data-reveal>// 02 — EXPERIENCE</span>
+      <h2 class="section-head__title" data-reveal>Work that<br/>left the desk.</h2>
+      <p class="section-head__note mono" data-reveal>work with someone else’s name on it</p>
+    </div>
+
+    <ol class="exp__list">
+      <li class="exp__item" data-reveal>
+        <div class="exp__when mono">
+          <span class="exp__dates">Jun 2024 – Present</span>
+          <span class="exp__kind">Christchurch, NZ</span>
+        </div>
+        <div class="exp__body">
+          <h3 class="exp__role">AEC Electronics</h3>
+          <p class="exp__org">Embedded systems, hardware integration &amp; client-facing work</p>
+          <p class="exp__desc">
+            Two years inside an electronics firm. Some days that means reading a datasheet to work out
+            why a board won’t answer. Other days it means standing in a plant room explaining to the
+            person who paid for it why it now does.
+          </p>
+          <ul class="exp__points">
+            <li>Worked with PLC drivers, interfacing industrial hardware over <strong>SPI, I²C and UART</strong>.</li>
+            <li>Configured Raspberry Pi OS for deployment, including custom boot splash images and Ethernet bridging with <strong>ebtables</strong>.</li>
+            <li>Built a <strong>Python GUI</strong> that reads and writes <strong>Azure Data Tables</strong> over their REST API.</li>
+            <li>Worked on-site with clients and handled communication between clients and suppliers.</li>
+          </ul>
+          <ul class="exp__tags mono">
+            <li>Embedded Systems</li><li>Python</li><li>Linux</li><li>Azure REST</li><li>Networking</li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="exp__item" data-reveal>
+        <div class="exp__when mono">
+          <span class="exp__dates">Client project</span>
+          <span class="exp__kind">Delivered for marketing use</span>
+        </div>
+        <div class="exp__body">
+          <h3 class="exp__role">Holmes Solutions</h3>
+          <p class="exp__org">Switchback ride visualiser</p>
+          <p class="exp__desc">
+            An interactive 3D visualiser for the Switchback ride system, built in Godot. The animation
+            it rendered was used as marketing material <em>before the real track existed</em>.
+          </p>
+          <ul class="exp__points">
+            <li>Converted supplied <strong>CAD models into splines</strong> usable as game-engine assets.</li>
+            <li>Tuned a physics engine so the carriage motion held up in real time.</li>
+            <li>Exposed live motion and camera parameters so the client could dial in their own shots.</li>
+          </ul>
+          <ul class="exp__tags mono">
+            <li>Godot</li><li>CAD</li><li>Simulation</li><li>3D</li>
+          </ul>
+        </div>
       </li>
     </ol>
   </section>
@@ -226,9 +323,9 @@
   <!-- ═══════════════ THE LAB (sub-projects) ═══════════════ -->
   <section class="lab" id="lab">
     <div class="section-head">
-      <span class="section-head__tag mono" data-reveal>// 02 — THE LAB</span>
+      <span class="section-head__tag mono" data-reveal>// 03 — THE LAB</span>
       <h2 class="section-head__title" data-reveal>Smaller<br/>experiments.</h2>
-      <p class="section-head__note mono" data-reveal>open-source &amp; weekend builds</p>
+      <p class="section-head__note mono" data-reveal>small things, mostly open source</p>
     </div>
 
     <div class="lab__grid">
@@ -239,13 +336,13 @@
         data-meta="PYTHON · AI AGENT · AEC"
         data-media="assets/rohs.svg"
         data-tags="Python, LLM, Automation, Web Scraping"
-        data-desc="An AI agent that hunts down and reads RoHS compliance certificates for electronic components, then extracts and verifies the restricted-substance data automatically. Built at AEC Electronics to turn hours of manual datasheet-digging into a single query.">
+        data-desc="Checking whether a component is RoHS compliant means finding the manufacturer&rsquo;s certificate, opening it, and reading the restricted-substance table. It is slow, and it is the same steps every time. This agent does the finding and the reading, then reports the substance data back. Built at AEC Electronics.">
         <div class="lab-card__top">
           <span class="lab-card__icon mono">▤</span>
           <span class="lab-card__badge mono">PREVIEW</span>
         </div>
         <h3 class="lab-card__name">RoHS Scraper</h3>
-        <p class="lab-card__desc">An AI agent that scrapes &amp; verifies RoHS compliance certificates.</p>
+        <p class="lab-card__desc">Finds and reads RoHS compliance certificates so nobody has to.</p>
         <div class="lab-card__foot">
           <span class="lab-card__meta mono">Python · AI</span>
           <span class="lab-card__action mono">PREVIEW <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></span>
@@ -253,15 +350,15 @@
       </button>
 
       <!-- External link -->
-      <a class="lab-card" href="https://github.com/JammingDino/MTG-Proxy-Maker" target="_blank" rel="noopener noreferrer" data-reveal data-cursor="link">
+      <a class="lab-card" href="https://github.com/JammingDino/weblib-1.21" target="_blank" rel="noopener noreferrer" data-reveal data-cursor="link">
         <div class="lab-card__top">
-          <span class="lab-card__icon mono">✦</span>
+          <span class="lab-card__icon mono">◫</span>
           <span class="lab-card__badge mono">GITHUB</span>
         </div>
-        <h3 class="lab-card__name">MTG Proxy Maker</h3>
-        <p class="lab-card__desc">Generates print-ready proxy sheets for Magic: The Gathering decks.</p>
+        <h3 class="lab-card__name">WebLib</h3>
+        <p class="lab-card__desc">A native HTML/CSS/JS GUI framework for Minecraft NeoForge 1.21.</p>
         <div class="lab-card__foot">
-          <span class="lab-card__meta mono">Python</span>
+          <span class="lab-card__meta mono">Java</span>
           <span class="lab-card__action mono">VISIT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
@@ -273,7 +370,7 @@
         data-media="assets/macspoofer.svg"
         data-tags="Orange Pi, Linux, Networking, Packet Manipulation, Embedded"
         data-desc="A transparent Layer-2 bridge running on an Orange Pi, wired inline between selected devices and the rest of the network — to everything else it simply looks like a switch. It watches for specific source MAC addresses, intercepts those frames, rewrites their identity, then forwards a clone to the original destination while dropping the source packet."
-        data-highlights="Sits inline as a transparent Layer-2 bridge — invisible to the rest of the LAN/WAN|Intercepts frames from targeted MACs, rewrites their identity, drops the original and forwards a clone|Built to revive a fleet of already-deployed ONVIF cameras after their MACs were blocked — no hardware swap, no rewiring|Runs headless on low-cost Orange Pi hardware">
+        data-highlights="Sits inline as a transparent Layer-2 bridge, invisible to the rest of the LAN and WAN|Intercepts frames from targeted MACs, rewrites their identity, drops the original and forwards a clone|Built to revive a fleet of already-deployed ONVIF cameras after their MACs were blocked — no hardware swap, no rewiring|Runs headless on low-cost Orange Pi hardware">
         <div class="lab-card__top">
           <span class="lab-card__icon mono">⇌</span>
           <span class="lab-card__badge mono">PREVIEW</span>
@@ -303,13 +400,27 @@
       <!-- External link -->
       <a class="lab-card" href="https://github.com/JammingDino/Datapack-Converter" target="_blank" rel="noopener noreferrer" data-reveal data-cursor="link">
         <div class="lab-card__top">
-          <span class="lab-card__icon mono">⇄</span>
+          <span class="lab-card__icon mono">⊟</span>
           <span class="lab-card__badge mono">GITHUB</span>
         </div>
         <h3 class="lab-card__name">Datapack → Mod</h3>
-        <p class="lab-card__desc">Converts Minecraft datapacks into full Java mods automatically.</p>
+        <p class="lab-card__desc">Packages a Minecraft datapack into a distributable Fabric&nbsp;.jar.</p>
         <div class="lab-card__foot">
-          <span class="lab-card__meta mono">Java</span>
+          <span class="lab-card__meta mono">Python · GUI</span>
+          <span class="lab-card__action mono">VISIT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
+      </a>
+
+      <!-- External link -->
+      <a class="lab-card" href="https://github.com/JammingDino/Website" target="_blank" rel="noopener noreferrer" data-reveal data-cursor="link">
+        <div class="lab-card__top">
+          <span class="lab-card__icon mono">◈</span>
+          <span class="lab-card__badge mono">GITHUB</span>
+        </div>
+        <h3 class="lab-card__name">This Site</h3>
+        <p class="lab-card__desc">Hand-written HTML, CSS and JS. No framework, no build step.</p>
+        <div class="lab-card__foot">
+          <span class="lab-card__meta mono">HTML · CSS · JS</span>
           <span class="lab-card__action mono">VISIT <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </div>
       </a>
@@ -320,15 +431,34 @@
   <!-- ═══════════════ ABOUT ═══════════════ -->
   <section class="about" id="about">
     <div class="section-head">
-      <span class="section-head__tag mono" data-reveal>// 03 — ABOUT</span>
+      <span class="section-head__tag mono" data-reveal>// 04 — ABOUT</span>
     </div>
 
     <p class="about__statement" data-reveal-words>
-      I build software from the <span class="accent">systems up</span> — backend services, embedded
-      firmware, and the automation and AI tooling in between. My focus is the work that stays out of
-      sight: the architecture that keeps a product fast, <span class="accent">reliable</span>, and
-      maintainable. I design when it counts, but always in service of the engineering underneath.
+      I like the problems that sit <span class="accent">underneath the interface</span>. Why a device
+      won’t answer on the bus. Why a job that ran fine yesterday quietly writes garbage today. What a
+      program should do when the network drops halfway through. I can build the part you can see as
+      well. I just find <span class="accent">this half more interesting</span>.
     </p>
+
+    <div class="about__bio" data-reveal>
+      <figure class="about__portrait">
+        <img src="assets/portrait.jpg" alt="Portrait of Levi Pronk-Jones" loading="lazy" width="360" height="360" />
+      </figure>
+      <div class="about__bio-text">
+        <p>
+          I’m a first-year <strong>Mechatronics Engineering</strong> student at the University of
+          Canterbury. I was writing software people actually used a long time before I enrolled,
+          which is the reason most of this page is about things that shipped rather than papers I
+          have written.
+        </p>
+        <p>
+          Away from a keyboard I did the full 21-day Outward Bound “Mind Body Soul” course at Anakiwa
+          on scholarship, and I hold a current first aid certificate. I’m looking for a
+          <strong>2026&ndash;27 summer engineering internship</strong>, in Christchurch or remote.
+        </p>
+      </div>
+    </div>
 
     <div class="about__grid">
       <div class="about__col" data-reveal>
@@ -338,14 +468,16 @@
           <li>Embedded &amp; IoT (Arduino, PlatformIO)</li>
           <li>Agentic AI &amp; LLM tooling</li>
           <li>Automation &amp; web scraping</li>
+          <li>Simulation &amp; 3D visualisation</li>
           <li>Full-stack &amp; front-end development</li>
         </ul>
       </div>
       <div class="about__col" data-reveal>
         <h3 class="about__col-title mono">TOOLKIT</h3>
         <ul class="about__list">
-          <li>Python · C++ · Rust</li>
-          <li>TypeScript · JavaScript · Java</li>
+          <li>Python · Rust · Java</li>
+          <li>TypeScript · JavaScript</li>
+          <li>Godot · GDScript</li>
           <li>React · React Native · Node</li>
           <li>Linux · Git · Networking</li>
           <li>Arduino · PlatformIO · SQLite</li>
@@ -353,16 +485,16 @@
       </div>
       <div class="about__col about__stats" data-reveal>
         <div class="stat">
-          <span class="stat__num mono" data-count="38">00</span>
-          <span class="stat__label">Projects shipped</span>
-        </div>
-        <div class="stat">
-          <span class="stat__num mono" data-count="14">0</span>
-          <span class="stat__label">Open-source repos</span>
-        </div>
-        <div class="stat">
-          <span class="stat__num mono" data-downloads>450K+</span>
+          <span class="stat__num mono" data-downloads>500K+</span>
           <span class="stat__label">Mod downloads</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono" data-repos data-count="15">0</span>
+          <span class="stat__label">Public repos</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono" data-count="2" data-suffix="+">0</span>
+          <span class="stat__label">Yrs in industry</span>
         </div>
       </div>
     </div>
@@ -370,10 +502,10 @@
 
   <!-- ═══════════════ CONTACT ═══════════════ -->
   <section class="contact" id="contact">
-    <span class="section-head__tag mono" data-reveal>// 04 — CONTACT</span>
+    <span class="section-head__tag mono" data-reveal>// 05 — CONTACT</span>
     <h2 class="contact__title" data-reveal>
-      Let’s build<br/>
-      <span class="accent">something real.</span>
+      I’m looking for a<br/>
+      <span class="accent">summer internship.</span>
     </h2>
 
     <a href="mailto:levipronkjones1@gmail.com" class="contact__email" data-cursor="link" data-magnetic>
@@ -402,18 +534,38 @@
     <button class="modal__close" id="modalClose" data-close aria-label="Close preview">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
-    <div class="modal__media">
-      <img id="modalMedia" src="" alt="" />
-    </div>
     <div class="modal__info">
       <span class="modal__meta mono" id="modalMeta"></span>
       <h3 class="modal__title" id="modalTitle"></h3>
       <p class="modal__desc" id="modalDesc"></p>
-      <ul class="modal__highlights" id="modalHighlights"></ul>
+      <!-- Highlights and gallery figures are woven together here at open time
+           so a case study alternates reading and looking. -->
+      <div class="modal__body" id="modalBody"></div>
       <ul class="modal__tags mono" id="modalTags"></ul>
+      <p class="modal__note" id="modalNote"></p>
       <div class="modal__links" id="modalLinks"></div>
     </div>
   </div>
+</div>
+
+<!-- ░░░ IMAGE LIGHTBOX ░░░ -->
+<!-- Sits above the case-study modal so a figure can be opened full size without
+     losing the reader's place in the modal underneath. -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" aria-hidden="true">
+  <div class="lightbox__backdrop" data-lb-close></div>
+  <button class="lightbox__close" id="lightboxClose" data-lb-close aria-label="Close image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <figure class="lightbox__figure">
+    <img id="lightboxImg" alt="" />
+    <figcaption class="lightbox__caption mono" id="lightboxCaption"></figcaption>
+  </figure>
 </div>
 
 <script src="script.js"></script>

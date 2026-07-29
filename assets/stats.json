@@ -1,6 +1,6 @@
 {
-  "_comment": "CurseForge is Cloudflare/key-gated and can't be fetched from the browser, so its total is stored here and the site sums it with the live Modrinth count. Update 'curseforge' from your CurseForge dashboard, or automate it (see README).",
-  "curseforge": 431224,
-  "modrinthFallback": 18776,
-  "updated": "2026-06-24"
+  "_comment": "CurseForge total read from the author dashboard (485.0K on 2026-07-29). CurseForge is Cloudflare/key-gated and can't be fetched from the browser, so its total is stored here and the site sums it with the live Modrinth count. Update 'curseforge' from your CurseForge dashboard, or automate it (see README).",
+  "curseforge": 485000,
+  "modrinthFallback": 19572,
+  "updated": "2026-07-29"
 }

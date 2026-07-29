@@ -9,10 +9,26 @@ A near-monochrome dark "ink" theme with a single molten-orange accent (`#ff4d00`
 ## Sections
 
 - **Hero** — animated canvas backdrop and intro
-- **Selected Work** — three feature projects (Chemistry Simulator, Minecraft Mods, MultiZone) that open a detail modal
+- **Selected Work** — four feature projects (MultiZone, Chemistry Simulator, Minecraft Mods, MTG Proxy Maker) that open a detail modal
+- **Experience** — industry and client engagements (AEC Electronics, Holmes Solutions)
 - **The Lab** — smaller experiments and open-source builds
-- **About** — capabilities, toolkit, and stats
+- **About** — bio, capabilities, toolkit, and stats
 - **Contact** — email and social links
+
+## Project modals
+
+Any `.project__inner` or `.lab-card` carrying `data-title` opens the shared modal.
+The modal is populated from that element's dataset:
+
+| Attribute        | Format                                      |
+| ---------------- | ------------------------------------------- |
+| `data-media`     | single hero image (ignored if `data-gallery` is set) |
+| `data-desc`      | lead paragraph                              |
+| `data-highlights`| `\|`-separated bullets                       |
+| `data-gallery`   | `Caption::src \| Caption::src` — captioned figures |
+| `data-tags`      | comma-separated                             |
+| `data-note`      | closing line for credits, caveats, availability |
+| `data-links`     | `Label::url \| Label::url`                   |
 
 ## Structure
 
@@ -37,6 +53,10 @@ To keep it current, edit `curseforge` in `assets/stats.json` with the combined
 total from your CurseForge dashboard. (To fully automate it you'd add a scheduled
 GitHub Action that calls the CurseForge API with a `CURSEFORGE_API_KEY` secret and
 commits the updated JSON — not wired up yet.)
+
+The "Public repos" stat works the same way: GitHub's REST API is open-CORS, so the
+real figure is fetched live from `api.github.com/users/JammingDino`. The
+`data-count` value in the markup is only the offline fallback.
 
 ## Running locally
 

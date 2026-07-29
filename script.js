@@ -207,7 +207,10 @@
             });
             node.replaceChild(span, child);
           } else if (child.nodeType === 1) {
-            child.classList.add("word-r");
+            // Recurse rather than treating the whole element as one word, so a
+            // multi-word <span class="accent"> lights up word by word like the
+            // rest of the sentence instead of all at once.
+            wrapWords(child);
           }
         });
       };
@@ -282,7 +285,7 @@
 
     (async () => {
       // Fallbacks keep the page accurate even fully offline.
-      let curseforge = 431224, modrinth = 18776;
+      let curseforge = 485000, modrinth = 19572;
 
       try {
         const s = await fetch("assets/stats.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null));
@@ -303,18 +306,37 @@
       const total = curseforge + modrinth;
       els.forEach((el) => animate(el, total));
 
-      // Keep the Minecraft modal's copy in sync with the live figure.
+      // Keep the Minecraft modal's copy in sync with the live figure. Only the
+      // leading "500,000+" is swapped — the rest of the sentence is left alone.
       const mc = $("#mcProject");
       if (mc) {
-        mc.dataset.meta = "JAVA · " + total.toLocaleString() + "+ DOWNLOADS";
+        const exact = total.toLocaleString() + "+";
+        mc.dataset.meta = "JAVA · " + exact + " DOWNLOADS";
         if (mc.dataset.highlights) {
-          mc.dataset.highlights = mc.dataset.highlights.replace(
-            /^[^|]*/,
-            total.toLocaleString() + "+ combined downloads across CurseForge & Modrinth"
-          );
+          mc.dataset.highlights = mc.dataset.highlights.replace(/^[\d,]+\+/, exact);
         }
       }
     })();
+  }
+
+  /* ---------------------------------------------------------
+     LIVE PUBLIC REPO COUNT
+     GitHub's REST API is open-CORS, so the figure on the page is
+     the real one. data-count in the markup is the offline fallback.
+  --------------------------------------------------------- */
+  function initRepos() {
+    const el = $("[data-repos]");
+    if (!el) return;
+    fetch("https://api.github.com/users/JammingDino")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((u) => {
+        if (u && typeof u.public_repos === "number") {
+          el.setAttribute("data-count", String(u.public_repos));
+          // If the counter already ran, correct the settled value.
+          if (el.textContent.trim() !== "0") el.textContent = String(u.public_repos);
+        }
+      })
+      .catch(() => { /* fallback stays */ });
   }
 
   /* ---------------------------------------------------------
@@ -416,16 +438,67 @@
   function initModal() {
     const modal = $("#modal");
     if (!modal) return;
-    const img    = $("#modalMedia");
     const meta   = $("#modalMeta");
     const title  = $("#modalTitle");
     const desc   = $("#modalDesc");
-    const highs  = $("#modalHighlights");
+    const body   = $("#modalBody");
     const tags   = $("#modalTags");
+    const note   = $("#modalNote");
     const links  = $("#modalLinks");
     const closeBtn = $("#modalClose");
-    const mediaWrap = img.parentElement;
     let lastFocused = null;
+
+    /* ── Lightbox ───────────────────────────────────────────────────────────
+       Several of the screenshots are dense enough that they only make sense
+       at full size, so every figure in the modal opens into this layer. It
+       stacks above the modal rather than replacing it, and remembers the set
+       it was opened from so ← / → step through the same case study.        */
+    const lb        = $("#lightbox");
+    const lbImg     = $("#lightboxImg");
+    const lbCaption = $("#lightboxCaption");
+    const lbClose   = $("#lightboxClose");
+    const lbPrev    = $("#lightboxPrev");
+    const lbNext    = $("#lightboxNext");
+    let shots = [];        // the current modal's figures
+    let shotIndex = 0;
+    let lbReturnFocus = null;
+
+    function showShot(i) {
+      if (!shots.length) return;
+      shotIndex = (i + shots.length) % shots.length;
+      const s = shots[shotIndex];
+      lbImg.src = s.src;
+      lbImg.alt = s.caption;
+      lbCaption.textContent = shots.length > 1
+        ? (shotIndex + 1) + " / " + shots.length + (s.caption ? "  ·  " + s.caption : "")
+        : s.caption;
+      const many = shots.length > 1;
+      lbPrev.hidden = !many;
+      lbNext.hidden = !many;
+    }
+
+    function openLightbox(i) {
+      if (!shots.length) return;
+      lbReturnFocus = document.activeElement;
+      showShot(i);
+      lb.classList.add("is-open");
+      lb.setAttribute("aria-hidden", "false");
+      lbClose.focus();
+    }
+
+    function closeLightbox() {
+      lb.classList.remove("is-open");
+      lb.setAttribute("aria-hidden", "true");
+      lbImg.removeAttribute("src");
+      if (lbReturnFocus && lbReturnFocus.focus) lbReturnFocus.focus();
+      lbReturnFocus = null;
+    }
+
+    const lbIsOpen = () => lb.classList.contains("is-open");
+
+    lb.querySelectorAll("[data-lb-close]").forEach((el) => el.addEventListener("click", closeLightbox));
+    lbPrev.addEventListener("click", () => showShot(shotIndex - 1));
+    lbNext.addEventListener("click", () => showShot(shotIndex + 1));
 
     const fillList = (el, items, make) => {
       el.innerHTML = "";
@@ -439,17 +512,82 @@
       meta.textContent  = d.meta || "";
       desc.textContent  = d.desc || "";
 
-      // media (optional)
-      if (d.media) { img.src = d.media; img.alt = (d.title || "") + " preview"; mediaWrap.style.display = ""; }
-      else { img.removeAttribute("src"); mediaWrap.style.display = "none"; }
-
-      // highlights — split on "|"
-      const hi = (d.highlights || "").split("|").map((t) => t.trim()).filter(Boolean);
-      fillList(highs, hi, (t) => { const li = document.createElement("li"); li.textContent = t; return li; });
-
       // tags — split on ","
       const tg = (d.tags || "").split(",").map((t) => t.trim()).filter(Boolean);
       fillList(tags, tg, (t) => { const li = document.createElement("li"); li.textContent = t; return li; });
+
+      // ── Body: highlights and gallery figures, woven together ──────────────
+      // A run of bullets followed by a run of screenshots reads as homework
+      // then a slideshow. Alternating them lets each figure illustrate the
+      // points just made, and keeps a long case study from becoming a wall.
+      const hi  = (d.highlights || "").split("|").map((t) => t.trim()).filter(Boolean);
+      let gal = (d.gallery || "").split("|").map((t) => t.trim()).filter(Boolean)
+        .map((entry) => {
+          const [caption, src] = entry.split("::").map((s) => s.trim());
+          return src ? { caption: caption || "", src } : null;
+        }).filter(Boolean);
+      // A card with a single data-media and no gallery becomes a one-shot
+      // gallery, so every image in every modal enlarges the same way.
+      if (!gal.length && d.media) gal = [{ caption: "", src: d.media }];
+
+      body.innerHTML = "";
+      shots = gal.slice();
+
+      const addFigure = (shot, index) => {
+        const fig = document.createElement("figure");
+        fig.className = "modal__shot";
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "modal__shot-btn";
+        btn.setAttribute("data-cursor", "link");
+        btn.setAttribute("aria-label", "Enlarge: " + (shot.caption || "image"));
+        const im = document.createElement("img");
+        im.src = shot.src; im.loading = "lazy";
+        im.alt = shot.caption || ((d.title || "Project") + " screenshot");
+        const hint = document.createElement("span");
+        hint.className = "modal__shot-hint mono";
+        hint.setAttribute("aria-hidden", "true");
+        hint.textContent = "ENLARGE";
+        btn.append(im, hint);
+        btn.addEventListener("click", () => openLightbox(index));
+        fig.appendChild(btn);
+        if (shot.caption) {
+          const cap = document.createElement("figcaption");
+          cap.className = "mono";
+          cap.textContent = shot.caption;
+          fig.appendChild(cap);
+        }
+        body.appendChild(fig);
+      };
+
+      const addBullets = (items) => {
+        if (!items.length) return;
+        const ul = document.createElement("ul");
+        ul.className = "modal__highlights";
+        items.forEach((t) => { const li = document.createElement("li"); li.textContent = t; ul.appendChild(li); });
+        body.appendChild(ul);
+      };
+
+      if (!gal.length) {
+        addBullets(hi);
+      } else if (!hi.length) {
+        gal.forEach(addFigure);
+      } else {
+        // Lead with one figure so the modal opens on something to look at,
+        // then split the bullets across the figures that remain.
+        addFigure(gal[0], 0);
+        const rest = gal.slice(1);
+        const groups = rest.length + 1;
+        const per = Math.ceil(hi.length / groups);
+        for (let g = 0; g < groups; g++) {
+          addBullets(hi.slice(g * per, (g + 1) * per));
+          if (rest[g]) addFigure(rest[g], g + 1);
+        }
+      }
+
+      // closing note — credits, availability, caveats
+      note.textContent = d.note || "";
+      note.hidden = !d.note;
 
       // links — "Label::url | Label::url"
       const lk = (d.links || "").split("|").map((t) => t.trim()).filter(Boolean);
@@ -471,9 +609,11 @@
     }
 
     function close() {
+      if (lbIsOpen()) closeLightbox();
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("is-locked");
+      shots = [];
       if (lastFocused) lastFocused.focus();
     }
 
@@ -484,7 +624,16 @@
     });
 
     modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", close));
+
     document.addEventListener("keydown", (e) => {
+      // The lightbox is the top layer, so it answers first and Escape peels
+      // one layer at a time rather than dumping the reader back to the page.
+      if (lbIsOpen()) {
+        if (e.key === "Escape")     { e.preventDefault(); closeLightbox(); }
+        if (e.key === "ArrowRight") { e.preventDefault(); showShot(shotIndex + 1); }
+        if (e.key === "ArrowLeft")  { e.preventDefault(); showShot(shotIndex - 1); }
+        return;
+      }
       if (e.key === "Escape" && modal.classList.contains("is-open")) close();
     });
   }
@@ -498,6 +647,7 @@
     initCursor();
     initMesh();
     initReveal();
+    initRepos();
     initCounters();
     initStats();
     initScroll();

@@ -12,7 +12,9 @@
   --line:       #262626;
   --bone:       #f4f1ea;
   --bone-dim:   #c8c5bd;
-  --muted:      #7d7a72;
+  /* lightened from #7d7a72 so the small mono meta labels clear WCAG AA
+     (4.5:1) on both --ink and --surface backgrounds, not just --ink */
+  --muted:      #8f8c84;
   --accent:     #ff4d00;
   --accent-2:   #ff8a4c;
 
@@ -95,7 +97,15 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 .cursor-dot{
   width:5px; height:5px; background:var(--accent);
   transform:translate(-50%,-50%);
+  transition:opacity .25s var(--ease);
 }
+/* The dot marks the true pointer position, so it only makes sense while the
+   ring is an outline. Once the ring fills (is-view) the dot lands on top of the
+   VIEW label, and when the pointer leaves the document the ring fades but the
+   dot used to stay behind. The ring is the dot's previous sibling, so its state
+   drives both and JS keeps a single source of truth. */
+.cursor.is-view + .cursor-dot,
+.cursor.is-hidden + .cursor-dot{ opacity:0; }
 .cursor.is-link{ width:52px; height:52px; border-color:var(--accent); }
 .cursor.is-view{
   width:96px; height:96px; background:var(--accent); border-color:transparent;
@@ -153,10 +163,11 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 .nav__link{ position:relative; font-size:.95rem; display:flex; align-items:baseline; gap:.4rem; }
 .nav__num{ font-size:.6rem; opacity:.5; }
 .nav__link::after{
-  content:""; position:absolute; left:0; bottom:-4px; height:1px; width:0;
-  background:var(--bone); transition:width .35s var(--ease);
+  content:""; position:absolute; left:0; bottom:-4px; height:1px; width:100%;
+  background:var(--bone); transform:scaleX(0); transform-origin:left;
+  transition:transform .35s var(--ease);
 }
-.nav__link:hover::after, .nav__link.is-active::after{ width:100%; }
+.nav__link:hover::after, .nav__link.is-active::after{ transform:scaleX(1); }
 .nav__status{ display:flex; align-items:center; gap:.5rem; font-size:.65rem; letter-spacing:.15em; }
 .nav__dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 var(--accent); animation:pulse 2.4s infinite; }
 @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(255,77,0,.6)} 70%{box-shadow:0 0 0 8px rgba(255,77,0,0)} 100%{box-shadow:0 0 0 0 rgba(255,77,0,0)} }
@@ -274,10 +285,10 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 .project__inner{
   display:grid; grid-template-columns:320px 1fr; gap:clamp(1.5rem,4vw,4rem);
   align-items:center; padding:clamp(1.8rem,4vh,3rem) 0;
-  transition:padding-left .5s var(--ease);
+  transition:transform .5s var(--ease);
   width:100%; text-align:left; font:inherit; color:inherit;
 }
-.project__inner:hover{ padding-left:1.2rem; }
+.project__inner:hover{ transform:translateX(1.2rem); }
 .project__visual{
   aspect-ratio:16/10; border-radius:var(--r); overflow:hidden; position:relative;
   background:var(--surface); border:1px solid var(--line);
@@ -313,12 +324,64 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 .project__inner:hover .project__cta{ opacity:1; transform:translateY(0); }
 
 /* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.exp{ border-top:1px solid var(--line); }
+.exp__list{
+  max-width:var(--maxw); margin:0 auto;
+  padding:0 var(--pad) clamp(4rem,10vh,7rem);
+  list-style:none;
+}
+.exp__item{
+  display:grid; grid-template-columns:minmax(180px,220px) 1fr;
+  gap:clamp(1.5rem,5vw,4rem);
+  padding:clamp(2rem,5vh,3.2rem) 0;
+  border-top:1px solid var(--line);
+}
+.exp__item:last-child{ border-bottom:1px solid var(--line); }
+
+.exp__when{ display:flex; flex-direction:column; gap:.45rem; padding-top:.4rem; }
+.exp__dates{ font-size:.72rem; letter-spacing:.1em; color:var(--accent); }
+.exp__kind{ font-size:.62rem; letter-spacing:.12em; color:var(--muted); }
+
+.exp__role{
+  font-family:var(--font-display); font-weight:500;
+  font-size:clamp(1.5rem,3.6vw,2.4rem); line-height:1.05; letter-spacing:-.02em;
+}
+.exp__org{
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--bone-dim); margin-top:.6rem;
+}
+.exp__desc{
+  color:var(--bone-dim); max-width:56ch; margin-top:1.1rem;
+  font-size:clamp(.92rem,1.2vw,1.02rem);
+}
+.exp__desc em{ color:var(--bone); font-style:italic; }
+
+.exp__points{ margin-top:1.4rem; display:grid; gap:.65rem; max-width:62ch; list-style:none; }
+.exp__points li{
+  position:relative; padding-left:1.5rem;
+  color:var(--bone-dim); font-size:.92rem; line-height:1.6;
+}
+.exp__points li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:9px; height:1px; background:var(--accent);
+}
+.exp__points strong{ color:var(--bone); font-weight:500; }
+
+.exp__tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.5rem; list-style:none; }
+.exp__tags li{
+  font-size:.62rem; letter-spacing:.06em; color:var(--muted);
+  border:1px solid var(--line); border-radius:100px; padding:.3rem .7rem;
+}
+
+/* ============================================================
    THE LAB
    ============================================================ */
 .lab{ border-top:1px solid var(--line); }
 .lab__grid{
   max-width:var(--maxw); margin:0 auto; padding:0 var(--pad) clamp(4rem,10vh,7rem);
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1.2rem;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem;
 }
 .lab-card{
   position:relative; padding:1.8rem; border:1px solid var(--line); border-radius:var(--r);
@@ -365,8 +428,6 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
   box-shadow:0 40px 120px rgba(0,0,0,.6);
 }
 .modal.is-open .modal__panel{ transform:none; }
-.modal__media{ position:relative; aspect-ratio:16/10; background:var(--ink-2); overflow:hidden; border-bottom:1px solid var(--line); }
-.modal__media img{ width:100%; height:100%; object-fit:cover; }
 .modal__info{ padding:clamp(1.5rem,3.5vw,2.4rem); }
 .modal__meta{ color:var(--accent); font-size:.66rem; letter-spacing:.18em; }
 .modal__title{ font-family:var(--font-display); font-weight:500; font-size:clamp(1.7rem,4.5vw,2.6rem); letter-spacing:-.02em; margin:.6rem 0 .9rem; }
@@ -379,6 +440,97 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
   content:""; position:absolute; left:0; top:.55em; width:8px; height:8px;
   background:var(--accent); border-radius:2px; transform:rotate(45deg);
 }
+/* Woven body: bullet runs and figures alternate, so the vertical rhythm has
+   to come from the stream itself rather than from each block's own margin. */
+.modal__body{ display:grid; gap:2rem; margin-top:1.8rem; }
+.modal__body .modal__highlights{ margin-top:0; }
+
+.modal__shot{ margin:0; }
+.modal__shot-btn{
+  display:block; width:100%; padding:0; border:0; background:none;
+  position:relative; border-radius:var(--r); overflow:hidden;
+  cursor:zoom-in; font:inherit; color:inherit;
+}
+.modal__shot-btn img{
+  width:100%; display:block; border-radius:var(--r);
+  border:1px solid var(--line); background:var(--ink-2);
+  transition:transform .6s var(--ease), border-color .3s;
+}
+.modal__shot-hint{
+  position:absolute; right:.7rem; bottom:.7rem;
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.4rem .65rem; border-radius:100px;
+  background:rgba(10,10,10,.82); border:1px solid rgba(244,241,234,.22);
+  font-size:.58rem; letter-spacing:.16em; color:var(--bone);
+  opacity:0; transform:translateY(6px);
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+.modal__shot-btn:hover img,
+.modal__shot-btn:focus-visible img{ transform:scale(1.015); border-color:#3a3a3a; }
+.modal__shot-btn:hover .modal__shot-hint,
+.modal__shot-btn:focus-visible .modal__shot-hint{ opacity:1; transform:none; }
+.modal__shot-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.modal__shot figcaption{
+  margin-top:.7rem; font-size:.64rem; letter-spacing:.08em;
+  color:#a09d94; line-height:1.5;
+}
+
+/* ============================================================
+   LIGHTBOX  (stacks above the case-study modal)
+   ============================================================ */
+.lightbox{
+  position:fixed; inset:0; z-index:9600; display:grid; place-items:center;
+  padding:clamp(1rem,4vw,3rem);
+  opacity:0; visibility:hidden;
+  transition:opacity .3s var(--ease), visibility .3s;
+}
+.lightbox.is-open{ opacity:1; visibility:visible; }
+.lightbox__backdrop{
+  position:absolute; inset:0; cursor:zoom-out;
+  background:rgba(4,4,5,.94); backdrop-filter:blur(6px);
+}
+.lightbox__figure{
+  position:relative; margin:0; max-width:100%; max-height:100%;
+  display:flex; flex-direction:column; gap:.9rem; align-items:center;
+  transform:scale(.985); transition:transform .35s var(--ease);
+}
+.lightbox.is-open .lightbox__figure{ transform:none; }
+.lightbox__figure img{
+  max-width:100%; max-height:82vh; width:auto; object-fit:contain;
+  border-radius:var(--r); border:1px solid var(--line);
+  box-shadow:0 30px 90px rgba(0,0,0,.6);
+}
+.lightbox__caption{
+  font-size:.66rem; letter-spacing:.1em; color:var(--bone-dim);
+  text-align:center; max-width:70ch; line-height:1.6;
+}
+.lightbox__close,
+.lightbox__nav{
+  position:absolute; z-index:2; display:grid; place-items:center;
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(20,20,20,.9); border:1px solid var(--line);
+  color:var(--bone); cursor:pointer;
+  transition:background .25s, border-color .25s, transform .25s var(--ease);
+}
+.lightbox__close:hover,
+.lightbox__nav:hover{ background:var(--accent); border-color:var(--accent); }
+.lightbox__close:focus-visible,
+.lightbox__nav:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+.lightbox__close{ top:clamp(1rem,3vw,2rem); right:clamp(1rem,3vw,2rem); }
+.lightbox__close:hover{ transform:rotate(90deg); }
+.lightbox__close svg{ width:18px; height:18px; }
+.lightbox__nav{ top:50%; margin-top:-23px; }
+.lightbox__nav svg{ width:20px; height:20px; }
+.lightbox__nav--prev{ left:clamp(.6rem,3vw,2rem); }
+.lightbox__nav--next{ right:clamp(.6rem,3vw,2rem); }
+.lightbox__nav--prev:hover{ transform:translateX(-3px); }
+.lightbox__nav--next:hover{ transform:translateX(3px); }
+.lightbox__nav[hidden]{ display:none; }
+.modal__note{
+  margin-top:1.6rem; padding-top:1.2rem; border-top:1px solid var(--line);
+  color:#a09d94; font-size:.82rem; line-height:1.65; max-width:62ch;
+}
+.modal__note[hidden]{ display:none; }
 .modal__tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.6rem; }
 .modal__tags li{ font-family:var(--font-mono); font-size:.6rem; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); border-radius:100px; padding:.3rem .7rem; }
 .modal__links{ display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.8rem; }
@@ -401,7 +553,35 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
   font-family:var(--font-display); font-weight:400;
   font-size:clamp(1.5rem,3.4vw,2.7rem); line-height:1.32; letter-spacing:-.015em;
 }
-.about__statement .word-r{ display:inline-block; opacity:.4; transition:opacity .5s var(--ease); }
+/* Deliberately `inline`, not `inline-block`. An inline-block is an atomic box
+   with a line-break opportunity on each side, so punctuation following an
+   <span class="accent"> could wrap onto a line by itself (". Sixty Magic…").
+   Only opacity animates here, which inline handles perfectly well. */
+.about__statement .word-r{ display:inline; opacity:.4; transition:opacity .5s var(--ease); }
+
+.about__bio{
+  max-width:var(--maxw); margin:0 auto;
+  padding:clamp(3rem,7vh,4.5rem) var(--pad) 0;
+  display:grid; grid-template-columns:220px 1fr; gap:clamp(1.8rem,4vw,3.5rem);
+  align-items:start;
+}
+.about__portrait{
+  /* the source art is already a circular cut-out — matching the frame to it
+     avoids a light rim showing against the square corners */
+  margin:0; border-radius:50%; overflow:hidden;
+  border:1px solid var(--line); background:var(--ink);
+  aspect-ratio:1; position:relative;
+}
+.about__portrait img{ width:100%; height:100%; object-fit:cover; display:block; }
+.about__portrait::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,77,0,.08),transparent 55%);
+}
+.about__bio-text{ max-width:58ch; }
+.about__bio-text p{ color:var(--bone-dim); font-size:clamp(.95rem,1.3vw,1.05rem); line-height:1.7; }
+.about__bio-text p + p{ margin-top:1.1rem; }
+.about__bio-text strong{ color:var(--bone); font-weight:500; }
+
 .about__grid{
   max-width:var(--maxw); margin:0 auto; padding:clamp(3rem,8vh,5rem) var(--pad) clamp(4rem,10vh,7rem);
   display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem;
@@ -436,9 +616,13 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 .contact__email:hover svg{ transform:translate(4px,-4px); }
 .contact__socials{ display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; margin-top:clamp(2.5rem,6vh,4rem); }
 .contact__socials a{ position:relative; font-size:.9rem; color:var(--bone-dim); letter-spacing:.02em; }
-.contact__socials a::after{ content:""; position:absolute; left:0; bottom:-3px; height:1px; width:0; background:var(--accent); transition:width .3s var(--ease); }
+.contact__socials a::after{
+  content:""; position:absolute; left:0; bottom:-3px; height:1px; width:100%;
+  background:var(--accent); transform:scaleX(0); transform-origin:left;
+  transition:transform .3s var(--ease);
+}
 .contact__socials a:hover{ color:var(--bone); }
-.contact__socials a:hover::after{ width:100%; }
+.contact__socials a:hover::after{ transform:scaleX(1); }
 
 /* ============================================================
    FOOTER
@@ -467,6 +651,8 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
   .project__cta{ grid-column:1 / -1; }
   .lab__grid{ grid-template-columns:repeat(2,1fr); }
   .about__grid{ grid-template-columns:1fr; gap:2.5rem; }
+  .exp__item{ grid-template-columns:1fr; gap:1.2rem; }
+  .exp__when{ flex-direction:row; align-items:baseline; gap:1rem; padding-top:0; }
 }
 
 @media (max-width: 720px){
@@ -493,6 +679,9 @@ html{ scrollbar-width:thin; scrollbar-color:var(--accent) var(--ink-2); }
 
   .lab__grid{ grid-template-columns:1fr; }
   .project__body{ grid-template-columns:1fr; gap:.8rem; }
+  .about__bio{ grid-template-columns:1fr; }
+  .about__portrait{ max-width:180px; }
+  .nav__link{ font-size:1.4rem; }
   .footer{ flex-direction:column; gap:.6rem; }
 }
 
